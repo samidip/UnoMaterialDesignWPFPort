@@ -1,0 +1,253 @@
+﻿<Page x:Class="UnoMaterialDesign.Presentation.ProgressPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:ut="using:Uno.Themes"
+      Background="{ThemeResource SurfaceBrush}">
+
+  <ScrollViewer>
+    <StackPanel Padding="32" Spacing="32" MaxWidth="960"
+                HorizontalAlignment="Stretch">
+
+      <!-- Page Header -->
+      <TextBlock x:Uid="ProgressPage.Title"
+                 Text="Progress"
+                 Style="{StaticResource HeadlineLarge}" />
+      <TextBlock x:Uid="ProgressPage.Subtitle"
+                 Text="Linear progress bars and circular progress rings for determinate and indeterminate states."
+                 Style="{StaticResource BodyLarge}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <!-- ═══════ Section 1: Linear Progress Bars ═══════ -->
+      <TextBlock Text="Linear Progress Bars"
+                 Style="{StaticResource TitleLarge}" />
+
+      <Border Background="{ThemeResource SurfaceVariantBrush}"
+              CornerRadius="16" Padding="24"
+              Translation="0,0,16">
+        <Border.Shadow>
+          <ThemeShadow />
+        </Border.Shadow>
+
+        <StackPanel Spacing="24">
+          <TextBlock Text="Determinate" Style="{StaticResource LabelLarge}" />
+
+          <!-- 25% -->
+          <StackPanel Spacing="8">
+            <TextBlock Text="25%" Style="{StaticResource LabelSmall}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+            <ProgressBar Value="25" />
+          </StackPanel>
+
+          <!-- 50% -->
+          <StackPanel Spacing="8">
+            <TextBlock Text="50%" Style="{StaticResource LabelSmall}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+            <ProgressBar Value="50" />
+          </StackPanel>
+
+          <!-- 75% -->
+          <StackPanel Spacing="8">
+            <TextBlock Text="75%" Style="{StaticResource LabelSmall}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+            <ProgressBar Value="75" />
+          </StackPanel>
+
+          <!-- 100% -->
+          <StackPanel Spacing="8">
+            <TextBlock Text="100%" Style="{StaticResource LabelSmall}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+            <ProgressBar Value="100" />
+          </StackPanel>
+
+          <Border Height="1" Background="{ThemeResource OutlineBrush}" Margin="0,8" />
+
+          <TextBlock Text="Indeterminate" Style="{StaticResource LabelLarge}" />
+          <ProgressBar IsIndeterminate="True" />
+        </StackPanel>
+      </Border>
+
+      <!-- ═══════ Section 2: Circular Progress Indicators ═══════ -->
+      <TextBlock Text="Circular Progress Indicators"
+                 Style="{StaticResource TitleLarge}" />
+
+      <Border Background="{ThemeResource SurfaceVariantBrush}"
+              CornerRadius="16" Padding="24"
+              Translation="0,0,16">
+        <Border.Shadow>
+          <ThemeShadow />
+        </Border.Shadow>
+
+        <Grid ColumnSpacing="24" RowSpacing="24">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+
+          <!-- Determinate 35% -->
+          <StackPanel Grid.Column="0" Spacing="12"
+                      HorizontalAlignment="Center">
+            <ProgressRing Value="35"
+                          IsIndeterminate="False"
+                          Width="48" Height="48"
+                          HorizontalAlignment="Center" />
+            <TextBlock Text="35%"
+                       Style="{StaticResource LabelMedium}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                       HorizontalAlignment="Center" />
+            <TextBlock Text="Determinate"
+                       Style="{StaticResource LabelSmall}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                       HorizontalAlignment="Center" />
+          </StackPanel>
+
+          <!-- Determinate 70% -->
+          <StackPanel Grid.Column="1" Spacing="12"
+                      HorizontalAlignment="Center">
+            <ProgressRing Value="70"
+                          IsIndeterminate="False"
+                          Width="48" Height="48"
+                          HorizontalAlignment="Center" />
+            <TextBlock Text="70%"
+                       Style="{StaticResource LabelMedium}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                       HorizontalAlignment="Center" />
+            <TextBlock Text="Determinate"
+                       Style="{StaticResource LabelSmall}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                       HorizontalAlignment="Center" />
+          </StackPanel>
+
+          <!-- Indeterminate -->
+          <StackPanel Grid.Column="2" Spacing="12"
+                      HorizontalAlignment="Center">
+            <ProgressRing IsIndeterminate="True"
+                          Width="48" Height="48"
+                          HorizontalAlignment="Center" />
+            <TextBlock Text="∞"
+                       Style="{StaticResource LabelMedium}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                       HorizontalAlignment="Center" />
+            <TextBlock Text="Indeterminate"
+                       Style="{StaticResource LabelSmall}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                       HorizontalAlignment="Center" />
+          </StackPanel>
+
+          <!-- Elevated ring in card -->
+          <StackPanel Grid.Row="1" Grid.Column="0" Spacing="12"
+                      HorizontalAlignment="Center">
+            <Border Background="{ThemeResource SurfaceBrush}"
+                    CornerRadius="14" Padding="8"
+                    HorizontalAlignment="Center"
+                    Translation="0,0,8">
+              <Border.Shadow>
+                <ThemeShadow />
+              </Border.Shadow>
+              <ProgressRing Value="50"
+                            IsIndeterminate="False"
+                            Width="48" Height="48" />
+            </Border>
+            <TextBlock Text="Elevated"
+                       Style="{StaticResource LabelSmall}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                       HorizontalAlignment="Center" />
+          </StackPanel>
+
+          <!-- Large ring -->
+          <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                      Spacing="12" HorizontalAlignment="Center">
+            <ProgressRing Value="60"
+                          IsIndeterminate="False"
+                          Width="80" Height="80"
+                          HorizontalAlignment="Center" />
+            <TextBlock Text="Large ring at 60%"
+                       Style="{StaticResource LabelSmall}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                       HorizontalAlignment="Center" />
+          </StackPanel>
+        </Grid>
+      </Border>
+
+      <!-- ═══════ Section 3: Interactive Demo ═══════ -->
+      <TextBlock Text="Interactive Demo"
+                 Style="{StaticResource TitleLarge}" />
+
+      <Border Background="{ThemeResource SurfaceVariantBrush}"
+              CornerRadius="16" Padding="24"
+              Translation="0,0,16">
+        <Border.Shadow>
+          <ThemeShadow />
+        </Border.Shadow>
+
+        <StackPanel Spacing="24">
+          <!-- Live progress bar -->
+          <TextBlock Text="Linear" Style="{StaticResource LabelLarge}" />
+          <ProgressBar Value="{Binding DeterminateValue}"
+                       IsIndeterminate="{Binding IsIndeterminate}"
+                       IsEnabled="{Binding ProgressEnabled}" />
+
+          <TextBlock Text="Circular" Style="{StaticResource LabelLarge}" />
+          <ProgressRing Value="{Binding DeterminateValue}"
+                        IsIndeterminate="{Binding IsIndeterminate}"
+                        IsEnabled="{Binding ProgressEnabled}"
+                        Width="64" Height="64"
+                        HorizontalAlignment="Left" />
+
+          <Border Height="1" Background="{ThemeResource OutlineBrush}" Margin="0,8" />
+
+          <!-- Slider to control value -->
+          <StackPanel Spacing="8">
+            <TextBlock Style="{StaticResource LabelLarge}">
+              <Run Text="Value: " />
+              <Run Text="{Binding DeterminateValue}" />
+              <Run Text="%" />
+            </TextBlock>
+            <Slider Value="{Binding DeterminateValue, Mode=TwoWay}"
+                    Minimum="0" Maximum="100"
+                    IsEnabled="{Binding ProgressEnabled}" />
+          </StackPanel>
+
+          <!-- Second slider -->
+          <StackPanel Spacing="8">
+            <TextBlock Style="{StaticResource LabelLarge}">
+              <Run Text="Second: " />
+              <Run Text="{Binding SecondValue}" />
+              <Run Text="%" />
+            </TextBlock>
+            <Slider Value="{Binding SecondValue, Mode=TwoWay}"
+                    Minimum="0" Maximum="100"
+                    IsEnabled="{Binding ProgressEnabled}" />
+            <ProgressBar Value="{Binding SecondValue}"
+                         IsIndeterminate="{Binding IsIndeterminate}"
+                         IsEnabled="{Binding ProgressEnabled}" />
+          </StackPanel>
+
+          <Border Height="1" Background="{ThemeResource OutlineBrush}" Margin="0,8" />
+
+          <!-- Toggles -->
+          <Grid ColumnSpacing="24">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ToggleSwitch Grid.Column="0"
+                          Header="Indeterminate"
+                          IsOn="{Binding IsIndeterminate, Mode=TwoWay}"
+                          AutomationProperties.Name="Toggle indeterminate mode" />
+            <ToggleSwitch Grid.Column="1"
+                          Header="Enabled"
+                          IsOn="{Binding ProgressEnabled, Mode=TwoWay}"
+                          AutomationProperties.Name="Toggle progress enabled" />
+          </Grid>
+        </StackPanel>
+      </Border>
+
+    </StackPanel>
+  </ScrollViewer>
+</Page>

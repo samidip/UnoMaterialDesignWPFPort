@@ -1,0 +1,306 @@
+﻿<Page x:Class="UnoMaterialDesign.Presentation.PickersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:ut="using:Uno.Themes"
+      Background="{ThemeResource SurfaceBrush}">
+
+  <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+    <StackPanel Padding="32"
+                Spacing="32"
+                MaxWidth="960"
+                HorizontalAlignment="Center">
+
+      <!-- ==================== SECTION 1: Date Pickers ==================== -->
+      <TextBlock x:Uid="PickersPage_DatePickersTitle"
+                 Text="Date Pickers"
+                 Style="{StaticResource HeadlineMedium}" />
+
+      <TextBlock x:Uid="PickersPage_DatePickersDesc"
+                 Text="WinUI DatePicker and CalendarDatePicker controls with Material Design theme."
+                 Style="{StaticResource BodyMedium}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <Grid ColumnSpacing="24"
+            RowSpacing="16">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- DatePicker (scroll wheels) -->
+        <StackPanel Spacing="8">
+          <TextBlock x:Uid="PickersPage_DatePickerLabel"
+                     Text="DatePicker"
+                     Style="{StaticResource LabelLarge}" />
+          <DatePicker x:Uid="PickersPage_DatePicker"
+                      Header="Pick Date"
+                      Date="{Binding SelectedDate, Mode=TwoWay}"
+                      HorizontalAlignment="Stretch"
+                      AutomationProperties.Name="Date Picker" />
+        </StackPanel>
+
+        <!-- CalendarDatePicker (calendar popup) -->
+        <StackPanel Grid.Column="1" Spacing="8">
+          <TextBlock x:Uid="PickersPage_CalendarDatePickerLabel"
+                     Text="CalendarDatePicker"
+                     Style="{StaticResource LabelLarge}" />
+          <CalendarDatePicker x:Uid="PickersPage_CalendarDatePicker"
+                              Header="Calendar Date"
+                              PlaceholderText="Select a date"
+                              Date="{Binding CalendarDate, Mode=TwoWay}"
+                              HorizontalAlignment="Stretch"
+                              AutomationProperties.Name="Calendar Date Picker" />
+        </StackPanel>
+
+        <!-- Future Date (min date = today) -->
+        <StackPanel Grid.Column="2" Spacing="8">
+          <TextBlock x:Uid="PickersPage_FutureDateLabel"
+                     Text="Future Date Only"
+                     Style="{StaticResource LabelLarge}" />
+          <CalendarDatePicker x:Uid="PickersPage_FutureDatePicker"
+                              Header="Future Date"
+                              PlaceholderText="Select a future date"
+                              Date="{Binding FutureDate, Mode=TwoWay}"
+                              MinDate="{Binding Today}"
+                              HorizontalAlignment="Stretch"
+                              AutomationProperties.Name="Future Date Picker" />
+        </StackPanel>
+
+        <!-- Disabled DatePicker -->
+        <StackPanel Grid.Row="1" Spacing="8">
+          <TextBlock x:Uid="PickersPage_DisabledDateLabel"
+                     Text="Disabled"
+                     Style="{StaticResource LabelLarge}" />
+          <DatePicker x:Uid="PickersPage_DisabledDatePicker"
+                      Header="Disabled"
+                      IsEnabled="False"
+                      HorizontalAlignment="Stretch"
+                      AutomationProperties.Name="Disabled Date Picker" />
+        </StackPanel>
+
+        <!-- DatePicker with enable toggle -->
+        <StackPanel Grid.Row="1" Grid.Column="1" Spacing="8">
+          <ToggleSwitch x:Uid="PickersPage_DateEnabled"
+                        Header="Enabled"
+                        IsOn="{Binding DatePickerEnabled, Mode=TwoWay}"
+                        AutomationProperties.Name="Date Picker Enabled" />
+          <DatePicker x:Uid="PickersPage_ToggleDatePicker"
+                      Header="Toggle Date"
+                      IsEnabled="{Binding DatePickerEnabled}"
+                      HorizontalAlignment="Stretch"
+                      AutomationProperties.Name="Toggle Date Picker" />
+        </StackPanel>
+      </Grid>
+
+      <!-- ==================== SECTION 2: Time Pickers ==================== -->
+      <TextBlock x:Uid="PickersPage_TimePickersTitle"
+                 Text="Time Pickers"
+                 Style="{StaticResource HeadlineMedium}" />
+
+      <TextBlock x:Uid="PickersPage_TimePickersDesc"
+                 Text="WinUI TimePicker control with 12/24 hour format support."
+                 Style="{StaticResource BodyMedium}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <Grid ColumnSpacing="24"
+            RowSpacing="16">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Standard TimePicker -->
+        <StackPanel Spacing="8">
+          <TextBlock x:Uid="PickersPage_TimePickerLabel"
+                     Text="TimePicker"
+                     Style="{StaticResource LabelLarge}" />
+          <TimePicker x:Uid="PickersPage_TimePicker"
+                      Header="Pick Time"
+                      Time="{Binding SelectedTime, Mode=TwoWay}"
+                      HorizontalAlignment="Stretch"
+                      AutomationProperties.Name="Time Picker" />
+        </StackPanel>
+
+        <!-- 24-Hour TimePicker -->
+        <StackPanel Grid.Column="1" Spacing="8">
+          <TextBlock x:Uid="PickersPage_24HourLabel"
+                     Text="24-Hour Format"
+                     Style="{StaticResource LabelLarge}" />
+          <TimePicker x:Uid="PickersPage_24HourPicker"
+                      Header="24 Hour"
+                      ClockIdentifier="24HourClock"
+                      HorizontalAlignment="Stretch"
+                      AutomationProperties.Name="24 Hour Time Picker" />
+        </StackPanel>
+
+        <!-- Minute Increment -->
+        <StackPanel Grid.Column="2" Spacing="8">
+          <TextBlock x:Uid="PickersPage_MinuteIncrementLabel"
+                     Text="15-Min Increments"
+                     Style="{StaticResource LabelLarge}" />
+          <TimePicker x:Uid="PickersPage_MinuteIncrementPicker"
+                      Header="15-Min Steps"
+                      MinuteIncrement="15"
+                      HorizontalAlignment="Stretch"
+                      AutomationProperties.Name="15 Minute Increment Picker" />
+        </StackPanel>
+
+        <!-- Disabled TimePicker -->
+        <StackPanel Grid.Row="1" Spacing="8">
+          <TextBlock x:Uid="PickersPage_DisabledTimeLabel"
+                     Text="Disabled"
+                     Style="{StaticResource LabelLarge}" />
+          <TimePicker x:Uid="PickersPage_DisabledTimePicker"
+                      Header="Disabled"
+                      IsEnabled="False"
+                      HorizontalAlignment="Stretch"
+                      AutomationProperties.Name="Disabled Time Picker" />
+        </StackPanel>
+
+        <!-- TimePicker with enable toggle -->
+        <StackPanel Grid.Row="1" Grid.Column="1" Spacing="8">
+          <ToggleSwitch x:Uid="PickersPage_TimeEnabled"
+                        Header="Enabled"
+                        IsOn="{Binding TimePickerEnabled, Mode=TwoWay}"
+                        AutomationProperties.Name="Time Picker Enabled" />
+          <TimePicker x:Uid="PickersPage_ToggleTimePicker"
+                      Header="Toggle Time"
+                      IsEnabled="{Binding TimePickerEnabled}"
+                      HorizontalAlignment="Stretch"
+                      AutomationProperties.Name="Toggle Time Picker" />
+        </StackPanel>
+      </Grid>
+
+      <!-- ==================== SECTION 3: Calendar View ==================== -->
+      <TextBlock x:Uid="PickersPage_CalendarViewTitle"
+                 Text="Calendar View"
+                 Style="{StaticResource HeadlineMedium}" />
+
+      <TextBlock x:Uid="PickersPage_CalendarViewDesc"
+                 Text="Inline CalendarView control for selecting dates directly."
+                 Style="{StaticResource BodyMedium}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <Grid ColumnSpacing="24">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Default CalendarView -->
+        <Border Background="{ThemeResource SurfaceVariantBrush}"
+                CornerRadius="16"
+                Padding="24"
+                Translation="0,0,8">
+          <Border.Shadow>
+            <ThemeShadow />
+          </Border.Shadow>
+          <StackPanel Spacing="16">
+            <TextBlock x:Uid="PickersPage_DefaultCalendarTitle"
+                       Text="Default Calendar"
+                       Style="{StaticResource TitleLarge}" />
+            <CalendarView x:Uid="PickersPage_DefaultCalendar"
+                          HorizontalAlignment="Center"
+                          AutomationProperties.Name="Default Calendar View" />
+          </StackPanel>
+        </Border>
+
+        <!-- Month/Year selection mode -->
+        <Border Grid.Column="1"
+                Background="{ThemeResource SurfaceVariantBrush}"
+                CornerRadius="16"
+                Padding="24"
+                Translation="0,0,8">
+          <Border.Shadow>
+            <ThemeShadow />
+          </Border.Shadow>
+          <StackPanel Spacing="16">
+            <TextBlock x:Uid="PickersPage_SelectionModeTitle"
+                       Text="Selection Modes"
+                       Style="{StaticResource TitleLarge}" />
+            <CalendarView x:Uid="PickersPage_MultiSelectCalendar"
+                          SelectionMode="Multiple"
+                          HorizontalAlignment="Center"
+                          AutomationProperties.Name="Multi-Select Calendar View" />
+            <TextBlock x:Uid="PickersPage_MultiSelectHint"
+                       Text="Hold Ctrl to select multiple dates"
+                       Style="{StaticResource BodySmall}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                       HorizontalAlignment="Center" />
+          </StackPanel>
+        </Border>
+      </Grid>
+
+      <!-- ==================== SECTION 4: Interactive Demo ==================== -->
+      <TextBlock x:Uid="PickersPage_InteractiveTitle"
+                 Text="Interactive Demo"
+                 Style="{StaticResource HeadlineMedium}" />
+
+      <Border Background="{ThemeResource SurfaceVariantBrush}"
+              CornerRadius="16"
+              Padding="24"
+              Translation="0,0,8">
+        <Border.Shadow>
+          <ThemeShadow />
+        </Border.Shadow>
+        <StackPanel Spacing="16">
+          <TextBlock x:Uid="PickersPage_InteractiveDesc"
+                     Text="Combine date and time pickers with live data binding."
+                     Style="{StaticResource TitleMedium}" />
+
+          <Grid ColumnSpacing="24">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <DatePicker x:Uid="PickersPage_BoundDate"
+                        Header="Select Date"
+                        Date="{Binding SelectedDate, Mode=TwoWay}"
+                        HorizontalAlignment="Stretch"
+                        AutomationProperties.Name="Bound Date" />
+
+            <TimePicker x:Uid="PickersPage_BoundTime"
+                        Grid.Column="1"
+                        Header="Select Time"
+                        Time="{Binding SelectedTime, Mode=TwoWay}"
+                        HorizontalAlignment="Stretch"
+                        AutomationProperties.Name="Bound Time" />
+          </Grid>
+
+          <Border Background="{ThemeResource SurfaceBrush}"
+                  CornerRadius="12"
+                  Padding="16">
+            <StackPanel Spacing="8">
+              <TextBlock Style="{StaticResource TitleSmall}"
+                         Text="Current Selection" />
+              <TextBlock Style="{StaticResource BodyLarge}"
+                         Foreground="{ThemeResource PrimaryBrush}">
+                <Run Text="Date:" />
+                <Run Text="{Binding SelectedDate}" FontWeight="Bold" />
+              </TextBlock>
+              <TextBlock Style="{StaticResource BodyLarge}"
+                         Foreground="{ThemeResource TertiaryBrush}">
+                <Run Text="Time:" />
+                <Run Text="{Binding SelectedTime}" FontWeight="Bold" />
+              </TextBlock>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </Border>
+
+    </StackPanel>
+  </ScrollViewer>
+</Page>

@@ -1,0 +1,243 @@
+﻿<Page x:Class="UnoMaterialDesign.Presentation.SnackbarPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:ut="using:Uno.Themes"
+      Background="{ThemeResource SurfaceBrush}">
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <!-- Main scrollable content -->
+    <ScrollViewer Grid.Row="0">
+      <StackPanel Padding="32" Spacing="32" MaxWidth="960"
+                  HorizontalAlignment="Stretch">
+
+        <!-- Page Header -->
+        <TextBlock x:Uid="SnackbarPage.Title"
+                   Text="Snackbar"
+                   Style="{StaticResource HeadlineLarge}" />
+        <TextBlock x:Uid="SnackbarPage.Subtitle"
+                   Text="Snackbars provide brief notifications at the bottom of the screen. In WinUI / Uno, InfoBar and custom bottom bars replace WPF's Snackbar control."
+                   Style="{StaticResource BodyLarge}"
+                   Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+        <!-- ═══════ Section 1: InfoBar Severities ═══════ -->
+        <TextBlock Text="InfoBar Notifications"
+                   Style="{StaticResource TitleLarge}" />
+
+        <Border Background="{ThemeResource SurfaceVariantBrush}"
+                CornerRadius="16" Padding="24"
+                Translation="0,0,16">
+          <Border.Shadow>
+            <ThemeShadow />
+          </Border.Shadow>
+
+          <StackPanel Spacing="12">
+            <TextBlock Text="WinUI's InfoBar control provides inline notifications with severity levels."
+                       Style="{StaticResource BodyMedium}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+            <InfoBar Title="Informational"
+                     Message="This is a general informational message."
+                     Severity="Informational"
+                     IsOpen="True"
+                     IsClosable="True" />
+
+            <InfoBar Title="Success"
+                     Message="The operation completed successfully."
+                     Severity="Success"
+                     IsOpen="True"
+                     IsClosable="True" />
+
+            <InfoBar Title="Warning"
+                     Message="Please review your settings before proceeding."
+                     Severity="Warning"
+                     IsOpen="True"
+                     IsClosable="True" />
+
+            <InfoBar Title="Error"
+                     Message="Something went wrong. Please try again."
+                     Severity="Error"
+                     IsOpen="True"
+                     IsClosable="True" />
+          </StackPanel>
+        </Border>
+
+        <!-- ═══════ Section 2: InfoBar with Action ═══════ -->
+        <TextBlock Text="InfoBar with Action"
+                   Style="{StaticResource TitleLarge}" />
+
+        <Border Background="{ThemeResource SurfaceVariantBrush}"
+                CornerRadius="16" Padding="24"
+                Translation="0,0,16">
+          <Border.Shadow>
+            <ThemeShadow />
+          </Border.Shadow>
+
+          <StackPanel Spacing="12">
+            <TextBlock Text="InfoBar supports custom action content such as buttons and hyperlinks."
+                       Style="{StaticResource BodyMedium}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+            <InfoBar Title="Update Available"
+                     Message="A new version is ready to install."
+                     Severity="Informational"
+                     IsOpen="True"
+                     IsClosable="True">
+              <InfoBar.ActionButton>
+                <Button Content="Update Now"
+                        Style="{StaticResource TextButtonStyle}" />
+              </InfoBar.ActionButton>
+            </InfoBar>
+
+            <InfoBar Title="Connection Lost"
+                     Message="Check your network connection and try again."
+                     Severity="Error"
+                     IsOpen="True"
+                     IsClosable="True">
+              <InfoBar.ActionButton>
+                <Button Content="Retry"
+                        Style="{StaticResource TextButtonStyle}" />
+              </InfoBar.ActionButton>
+            </InfoBar>
+
+            <InfoBar Title="File Saved"
+                     Message="Your changes have been saved to disk."
+                     Severity="Success"
+                     IsOpen="True"
+                     IsClosable="False" />
+          </StackPanel>
+        </Border>
+
+        <!-- ═══════ Section 3: Custom Snackbar ═══════ -->
+        <TextBlock Text="Custom Snackbar"
+                   Style="{StaticResource TitleLarge}" />
+
+        <Border Background="{ThemeResource SurfaceVariantBrush}"
+                CornerRadius="16" Padding="24"
+                Translation="0,0,16">
+          <Border.Shadow>
+            <ThemeShadow />
+          </Border.Shadow>
+
+          <StackPanel Spacing="16">
+            <TextBlock Text="A custom bottom-bar snackbar with timed auto-dismiss, mimicking the WPF MaterialDesign Snackbar + MessageQueue pattern."
+                       Style="{StaticResource BodyMedium}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+            <StackPanel Orientation="Horizontal" Spacing="12">
+              <Button Content="Simple"
+                      Click="ShowSimple_Click"
+                      Style="{StaticResource FilledButtonStyle}"
+                      AutomationProperties.Name="Show simple snackbar" />
+
+              <Button Content="With Action"
+                      Click="ShowWithAction_Click"
+                      Style="{StaticResource FilledTonalButtonStyle}"
+                      AutomationProperties.Name="Show snackbar with action" />
+
+              <Button Content="Long Text"
+                      Click="ShowLong_Click"
+                      Style="{StaticResource OutlinedButtonStyle}"
+                      AutomationProperties.Name="Show long snackbar" />
+            </StackPanel>
+
+            <Border Height="1" Background="{ThemeResource OutlineBrush}" Margin="0,4" />
+
+            <!-- Custom message input -->
+            <TextBlock Text="Send a custom message" Style="{StaticResource LabelLarge}" />
+
+            <Grid ColumnSpacing="12">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+              </Grid.ColumnDefinitions>
+              <TextBox Grid.Column="0"
+                       Text="{Binding MessageText, Mode=TwoWay}"
+                       PlaceholderText="Type your message..."
+                       Style="{StaticResource FilledTextBoxStyle}"
+                       AutomationProperties.Name="Snackbar message text" />
+              <Button Grid.Column="1"
+                      Content="Send"
+                      Click="SendMessage_Click"
+                      Style="{StaticResource FilledButtonStyle}"
+                      AutomationProperties.Name="Send snackbar message">
+                <ut:ControlExtensions.Icon>
+                  <FontIcon Glyph="&#xE724;" FontSize="16" />
+                </ut:ControlExtensions.Icon>
+              </Button>
+            </Grid>
+
+            <!-- Duration slider -->
+            <StackPanel Spacing="8">
+              <TextBlock Style="{StaticResource LabelLarge}">
+                <Run Text="Duration: " />
+                <Run Text="{Binding DurationSeconds}" />
+                <Run Text="s" />
+              </TextBlock>
+              <Slider Value="{Binding DurationSeconds, Mode=TwoWay}"
+                      Minimum="1" Maximum="10"
+                      StepFrequency="0.5"
+                      AutomationProperties.Name="Snackbar duration" />
+            </StackPanel>
+
+            <!-- Message counter -->
+            <TextBlock Style="{StaticResource BodySmall}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}">
+              <Run Text="Messages shown: " />
+              <Run Text="{Binding MessageCount}" />
+            </TextBlock>
+          </StackPanel>
+        </Border>
+
+        <!-- Bottom padding so snackbar doesn't overlap content -->
+        <Border Height="64" />
+
+      </StackPanel>
+    </ScrollViewer>
+
+    <!-- ═══════ Snackbar Toast (bottom of page) ═══════ -->
+    <Border Grid.Row="1"
+            Background="{ThemeResource InverseSurfaceBrush}"
+            Padding="16,12"
+            Visibility="{Binding IsSnackbarVisible}"
+            Translation="0,0,32">
+      <Border.Shadow>
+        <ThemeShadow />
+      </Border.Shadow>
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0"
+                   Text="{Binding SnackbarText}"
+                   Foreground="{ThemeResource InverseOnSurfaceBrush}"
+                   Style="{StaticResource BodyMedium}"
+                   VerticalAlignment="Center"
+                   TextWrapping="Wrap"
+                   MaxLines="2" />
+        <Button Grid.Column="1"
+                Content="UNDO"
+                Click="UndoAction_Click"
+                Style="{StaticResource TextButtonStyle}"
+                Foreground="{ThemeResource InversePrimaryBrush}"
+                VerticalAlignment="Center" />
+        <Button Grid.Column="2"
+                Click="DismissSnackbar_Click"
+                Style="{StaticResource TextButtonStyle}"
+                VerticalAlignment="Center"
+                MinWidth="44"
+                AutomationProperties.Name="Dismiss snackbar">
+          <FontIcon Glyph="&#xE711;" FontSize="14"
+                    Foreground="{ThemeResource InverseOnSurfaceBrush}" />
+        </Button>
+      </Grid>
+    </Border>
+  </Grid>
+</Page>

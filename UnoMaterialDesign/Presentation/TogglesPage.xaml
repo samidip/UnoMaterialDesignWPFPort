@@ -1,0 +1,403 @@
+﻿<Page x:Class="UnoMaterialDesign.Presentation.TogglesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:ut="using:Uno.Themes"
+      xmlns:local="using:UnoMaterialDesign.Presentation"
+      Background="{ThemeResource SurfaceBrush}">
+
+  <Page.DataContext>
+    <local:TogglesViewModel />
+  </Page.DataContext>
+
+  <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+    <StackPanel Padding="32"
+                Spacing="24"
+                MaxWidth="960"
+                HorizontalAlignment="Stretch">
+
+      <!-- Page Title -->
+      <TextBlock x:Uid="TogglesPage_Title"
+                 Text="Toggles"
+                 Style="{StaticResource HeadlineLarge}" />
+      <TextBlock x:Uid="TogglesPage_Subtitle"
+                 Text="Switches, checkboxes, radio buttons, and toggle controls"
+                 Style="{StaticResource BodyLarge}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SECTION 1: Toggle Switches                  -->
+      <!-- ════════════════════════════════════════════ -->
+      <Border Height="1" Background="{ThemeResource OutlineVariantBrush}" />
+      <TextBlock x:Uid="TogglesPage_SwitchHeading"
+                 Text="Toggle Switches"
+                 Style="{StaticResource TitleLarge}" />
+      <TextBlock x:Uid="TogglesPage_SwitchDesc"
+                 Text="Switches toggle the state of a single item on or off."
+                 Style="{StaticResource BodyMedium}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <StackPanel Spacing="4">
+        <ToggleSwitch x:Uid="TogglesPage_Wifi"
+                      IsOn="{Binding WifiEnabled, Mode=TwoWay}"
+                      OnContent="Wi-Fi"
+                      OffContent="Wi-Fi"
+                      AutomationProperties.Name="Wi-Fi toggle" />
+        <ToggleSwitch x:Uid="TogglesPage_Bluetooth"
+                      IsOn="{Binding BluetoothEnabled, Mode=TwoWay}"
+                      OnContent="Bluetooth"
+                      OffContent="Bluetooth"
+                      AutomationProperties.Name="Bluetooth toggle" />
+        <ToggleSwitch x:Uid="TogglesPage_Airplane"
+                      IsOn="{Binding AirplaneMode, Mode=TwoWay}"
+                      OnContent="Airplane Mode"
+                      OffContent="Airplane Mode"
+                      AutomationProperties.Name="Airplane Mode toggle" />
+        <ToggleSwitch x:Uid="TogglesPage_DisabledOn"
+                      IsOn="True"
+                      IsEnabled="False"
+                      OnContent="Disabled (On)"
+                      OffContent="Disabled (On)" />
+        <ToggleSwitch x:Uid="TogglesPage_DisabledOff"
+                      IsOn="False"
+                      IsEnabled="False"
+                      OnContent="Disabled (Off)"
+                      OffContent="Disabled (Off)" />
+      </StackPanel>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SECTION 2: Toggle Buttons                   -->
+      <!-- ════════════════════════════════════════════ -->
+      <Border Height="1" Background="{ThemeResource OutlineVariantBrush}" Margin="0,8,0,0" />
+      <TextBlock x:Uid="TogglesPage_ToggleBtnHeading"
+                 Text="Toggle Buttons"
+                 Style="{StaticResource TitleLarge}" />
+      <TextBlock x:Uid="TogglesPage_ToggleBtnDesc"
+                 Text="Toggle buttons allow a choice to be made between two states."
+                 Style="{StaticResource BodyMedium}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <StackPanel Spacing="8">
+        <TextBlock Text="Standard" Style="{StaticResource LabelLarge}" />
+        <StackPanel Orientation="Horizontal" Spacing="12">
+          <ToggleButton x:Uid="TogglesPage_ToggleA"
+                        Content="A"
+                        IsChecked="True"
+                        AutomationProperties.Name="Toggle A" />
+          <ToggleButton x:Uid="TogglesPage_ToggleB"
+                        Content="B"
+                        AutomationProperties.Name="Toggle B" />
+          <ToggleButton x:Uid="TogglesPage_ToggleC"
+                        Content="C"
+                        IsEnabled="False"
+                        AutomationProperties.Name="Toggle C disabled" />
+          <ToggleButton x:Uid="TogglesPage_ToggleCheckedDisabled"
+                        Content="D"
+                        IsChecked="True"
+                        IsEnabled="False"
+                        AutomationProperties.Name="Toggle D checked disabled" />
+        </StackPanel>
+      </StackPanel>
+
+      <StackPanel Spacing="8">
+        <TextBlock Text="Icon Toggle Buttons" Style="{StaticResource LabelLarge}" />
+        <StackPanel Orientation="Horizontal" Spacing="12">
+          <ToggleButton x:Uid="TogglesPage_ToggleBold"
+                        IsChecked="{Binding IsBold, Mode=TwoWay}"
+                        AutomationProperties.Name="Bold">
+            <FontIcon Glyph="&#xE8DD;" FontSize="16" />
+          </ToggleButton>
+          <ToggleButton x:Uid="TogglesPage_ToggleItalic"
+                        IsChecked="{Binding IsItalic, Mode=TwoWay}"
+                        AutomationProperties.Name="Italic">
+            <FontIcon Glyph="&#xE8DB;" FontSize="16" />
+          </ToggleButton>
+          <ToggleButton x:Uid="TogglesPage_ToggleUnderline"
+                        IsChecked="{Binding IsUnderline, Mode=TwoWay}"
+                        AutomationProperties.Name="Underline">
+            <FontIcon Glyph="&#xE8DC;" FontSize="16" />
+          </ToggleButton>
+          <ToggleButton x:Uid="TogglesPage_ToggleStar"
+                        AutomationProperties.Name="Star">
+            <FontIcon Glyph="&#xE734;" FontSize="16" />
+          </ToggleButton>
+          <ToggleButton x:Uid="TogglesPage_ToggleHeart"
+                        IsChecked="True"
+                        AutomationProperties.Name="Heart">
+            <FontIcon Glyph="&#xEB51;" FontSize="16" />
+          </ToggleButton>
+        </StackPanel>
+      </StackPanel>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SECTION 3: Checkboxes                       -->
+      <!-- ════════════════════════════════════════════ -->
+      <Border Height="1" Background="{ThemeResource OutlineVariantBrush}" Margin="0,8,0,0" />
+      <TextBlock x:Uid="TogglesPage_CheckHeading"
+                 Text="Checkboxes"
+                 Style="{StaticResource TitleLarge}" />
+      <TextBlock x:Uid="TogglesPage_CheckDesc"
+                 Text="Checkboxes allow users to select one or more items from a set, or turn an option on or off."
+                 Style="{StaticResource BodyMedium}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <Grid ColumnSpacing="32" RowSpacing="8">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Column 1: States -->
+        <StackPanel Grid.Column="0" Spacing="4">
+          <TextBlock Text="States" Style="{StaticResource LabelLarge}" Margin="0,0,0,8" />
+          <CheckBox x:Uid="TogglesPage_CheckChecked"
+                    Content="Checked"
+                    IsChecked="True" />
+          <CheckBox x:Uid="TogglesPage_CheckUnchecked"
+                    Content="Unchecked"
+                    IsChecked="False" />
+          <CheckBox x:Uid="TogglesPage_CheckIndeterminate"
+                    Content="Indeterminate"
+                    IsThreeState="True"
+                    IsChecked="{x:Null}" />
+          <CheckBox x:Uid="TogglesPage_CheckDisabledChecked"
+                    Content="Disabled Checked"
+                    IsChecked="True"
+                    IsEnabled="False" />
+          <CheckBox x:Uid="TogglesPage_CheckDisabledUnchecked"
+                    Content="Disabled Unchecked"
+                    IsChecked="False"
+                    IsEnabled="False" />
+          <CheckBox x:Uid="TogglesPage_CheckDisabledIndet"
+                    Content="Disabled Indeterminate"
+                    IsThreeState="True"
+                    IsChecked="{x:Null}"
+                    IsEnabled="False" />
+        </StackPanel>
+
+        <!-- Column 2: Interactive -->
+        <StackPanel Grid.Column="1" Spacing="4">
+          <TextBlock Text="Preferences" Style="{StaticResource LabelLarge}" Margin="0,0,0,8" />
+          <CheckBox x:Uid="TogglesPage_CheckNotif"
+                    Content="Enable Notifications"
+                    IsChecked="{Binding NotificationsEnabled, Mode=TwoWay}" />
+          <CheckBox x:Uid="TogglesPage_CheckSound"
+                    Content="Sound"
+                    IsChecked="{Binding SoundEnabled, Mode=TwoWay}" />
+          <CheckBox x:Uid="TogglesPage_CheckVibrate"
+                    Content="Vibration"
+                    IsChecked="{Binding VibrationEnabled, Mode=TwoWay}" />
+        </StackPanel>
+      </Grid>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SECTION 4: Radio Buttons                    -->
+      <!-- ════════════════════════════════════════════ -->
+      <Border Height="1" Background="{ThemeResource OutlineVariantBrush}" Margin="0,8,0,0" />
+      <TextBlock x:Uid="TogglesPage_RadioHeading"
+                 Text="Radio Buttons"
+                 Style="{StaticResource TitleLarge}" />
+      <TextBlock x:Uid="TogglesPage_RadioDesc"
+                 Text="Radio buttons allow users to select one option from a set."
+                 Style="{StaticResource BodyMedium}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <Grid ColumnSpacing="48" RowSpacing="8">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Group 1 -->
+        <StackPanel Grid.Column="0" Spacing="4">
+          <TextBlock Text="Size" Style="{StaticResource LabelLarge}" Margin="0,0,0,8" />
+          <RadioButton x:Uid="TogglesPage_RadioSmall"
+                       Content="Small"
+                       GroupName="Size"
+                       IsChecked="True" />
+          <RadioButton x:Uid="TogglesPage_RadioMedium"
+                       Content="Medium"
+                       GroupName="Size" />
+          <RadioButton x:Uid="TogglesPage_RadioLarge"
+                       Content="Large"
+                       GroupName="Size" />
+        </StackPanel>
+
+        <!-- Group 2 -->
+        <StackPanel Grid.Column="1" Spacing="4">
+          <TextBlock Text="Color" Style="{StaticResource LabelLarge}" Margin="0,0,0,8" />
+          <RadioButton x:Uid="TogglesPage_RadioRed"
+                       Content="Red"
+                       GroupName="Color"
+                       IsChecked="True" />
+          <RadioButton x:Uid="TogglesPage_RadioGreen"
+                       Content="Green"
+                       GroupName="Color" />
+          <RadioButton x:Uid="TogglesPage_RadioBlue"
+                       Content="Blue"
+                       GroupName="Color" />
+        </StackPanel>
+
+        <!-- Disabled group -->
+        <StackPanel Grid.Column="2" Spacing="4">
+          <TextBlock Text="Disabled" Style="{StaticResource LabelLarge}" Margin="0,0,0,8" />
+          <RadioButton x:Uid="TogglesPage_RadioDisA"
+                       Content="Option A"
+                       GroupName="DisabledGroup"
+                       IsChecked="True"
+                       IsEnabled="False" />
+          <RadioButton x:Uid="TogglesPage_RadioDisB"
+                       Content="Option B"
+                       GroupName="DisabledGroup"
+                       IsEnabled="False" />
+          <RadioButton x:Uid="TogglesPage_RadioDisC"
+                       Content="Option C"
+                       GroupName="DisabledGroup"
+                       IsEnabled="False" />
+        </StackPanel>
+      </Grid>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SECTION 5: Toolbar / Segmented Toggles      -->
+      <!-- ════════════════════════════════════════════ -->
+      <Border Height="1" Background="{ThemeResource OutlineVariantBrush}" Margin="0,8,0,0" />
+      <TextBlock x:Uid="TogglesPage_ToolbarHeading"
+                 Text="Toolbar Toggle Groups"
+                 Style="{StaticResource TitleLarge}" />
+      <TextBlock x:Uid="TogglesPage_ToolbarDesc"
+                 Text="Groups of toggle buttons for toolbar-style selection."
+                 Style="{StaticResource BodyMedium}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <!-- Alignment toggles (single-select) -->
+      <StackPanel Spacing="8">
+        <TextBlock Text="Text Alignment (Single Select)" Style="{StaticResource LabelLarge}" />
+        <StackPanel Orientation="Horizontal" Spacing="4">
+          <RadioButton x:Uid="TogglesPage_AlignLeft"
+                       GroupName="TextAlign"
+                       IsChecked="True"
+                       MinWidth="0"
+                       Padding="12,8"
+                       AutomationProperties.Name="Align Left">
+            <FontIcon Glyph="&#xE8E4;" FontSize="16" />
+          </RadioButton>
+          <RadioButton x:Uid="TogglesPage_AlignCenter"
+                       GroupName="TextAlign"
+                       MinWidth="0"
+                       Padding="12,8"
+                       AutomationProperties.Name="Align Center">
+            <FontIcon Glyph="&#xE8E3;" FontSize="16" />
+          </RadioButton>
+          <RadioButton x:Uid="TogglesPage_AlignRight"
+                       GroupName="TextAlign"
+                       MinWidth="0"
+                       Padding="12,8"
+                       AutomationProperties.Name="Align Right">
+            <FontIcon Glyph="&#xE8E2;" FontSize="16" />
+          </RadioButton>
+          <RadioButton x:Uid="TogglesPage_AlignJustify"
+                       GroupName="TextAlign"
+                       MinWidth="0"
+                       Padding="12,8"
+                       AutomationProperties.Name="Justify">
+            <FontIcon Glyph="&#xF590;" FontSize="16" />
+          </RadioButton>
+        </StackPanel>
+      </StackPanel>
+
+      <!-- Format toggles (multi-select) -->
+      <StackPanel Spacing="8">
+        <TextBlock Text="Text Formatting (Multi Select)" Style="{StaticResource LabelLarge}" />
+        <StackPanel Orientation="Horizontal" Spacing="4">
+          <ToggleButton x:Uid="TogglesPage_FmtBold"
+                        IsChecked="{Binding IsBold, Mode=TwoWay}"
+                        AutomationProperties.Name="Bold">
+            <FontIcon Glyph="&#xE8DD;" FontSize="16" />
+          </ToggleButton>
+          <ToggleButton x:Uid="TogglesPage_FmtItalic"
+                        IsChecked="{Binding IsItalic, Mode=TwoWay}"
+                        AutomationProperties.Name="Italic">
+            <FontIcon Glyph="&#xE8DB;" FontSize="16" />
+          </ToggleButton>
+          <ToggleButton x:Uid="TogglesPage_FmtUnderline"
+                        IsChecked="{Binding IsUnderline, Mode=TwoWay}"
+                        AutomationProperties.Name="Underline">
+            <FontIcon Glyph="&#xE8DC;" FontSize="16" />
+          </ToggleButton>
+        </StackPanel>
+      </StackPanel>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SECTION 6: Live Preview Card                -->
+      <!-- ════════════════════════════════════════════ -->
+      <Border Height="1" Background="{ThemeResource OutlineVariantBrush}" Margin="0,8,0,0" />
+      <TextBlock x:Uid="TogglesPage_PreviewHeading"
+                 Text="Live Preview"
+                 Style="{StaticResource TitleLarge}" />
+
+      <Border Background="{ThemeResource SurfaceVariantBrush}"
+              CornerRadius="16"
+              Padding="24">
+        <StackPanel Spacing="16">
+          <TextBlock Text="Current toggle states:" Style="{StaticResource TitleMedium}" />
+          <Grid ColumnSpacing="24" RowSpacing="4">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Wi-Fi" Style="{StaticResource BodyMedium}" />
+            <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource BodyMedium}"
+                       Foreground="{ThemeResource PrimaryBrush}">
+              <Run Text="{Binding WifiEnabled}" />
+            </TextBlock>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Bluetooth" Style="{StaticResource BodyMedium}" />
+            <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource BodyMedium}"
+                       Foreground="{ThemeResource PrimaryBrush}">
+              <Run Text="{Binding BluetoothEnabled}" />
+            </TextBlock>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Airplane Mode" Style="{StaticResource BodyMedium}" />
+            <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource BodyMedium}"
+                       Foreground="{ThemeResource PrimaryBrush}">
+              <Run Text="{Binding AirplaneMode}" />
+            </TextBlock>
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Bold" Style="{StaticResource BodyMedium}" />
+            <TextBlock Grid.Row="3" Grid.Column="1" Style="{StaticResource BodyMedium}"
+                       Foreground="{ThemeResource PrimaryBrush}">
+              <Run Text="{Binding IsBold}" />
+            </TextBlock>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Italic" Style="{StaticResource BodyMedium}" />
+            <TextBlock Grid.Row="4" Grid.Column="1" Style="{StaticResource BodyMedium}"
+                       Foreground="{ThemeResource PrimaryBrush}">
+              <Run Text="{Binding IsItalic}" />
+            </TextBlock>
+
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Underline" Style="{StaticResource BodyMedium}" />
+            <TextBlock Grid.Row="5" Grid.Column="1" Style="{StaticResource BodyMedium}"
+                       Foreground="{ThemeResource PrimaryBrush}">
+              <Run Text="{Binding IsUnderline}" />
+            </TextBlock>
+          </Grid>
+        </StackPanel>
+      </Border>
+
+      <!-- Bottom spacer -->
+      <Border Height="48" />
+
+    </StackPanel>
+  </ScrollViewer>
+</Page>

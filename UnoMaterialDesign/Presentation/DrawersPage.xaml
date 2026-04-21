@@ -1,0 +1,425 @@
+﻿<Page x:Class="UnoMaterialDesign.Presentation.DrawersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:ut="using:Uno.Themes"
+      Background="{ThemeResource SurfaceBrush}">
+
+  <Grid>
+    <!-- Interactive Drawer (full-page overlay, toggled via buttons) -->
+    <utu:DrawerControl x:Name="LeftDrawer"
+                       OpenDirection="Left"
+                       DrawerDepth="320"
+                       IsGestureEnabled="True">
+      <utu:DrawerControl.DrawerContent>
+        <Grid Background="{ThemeResource SurfaceBrush}" Padding="24" RowSpacing="16">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+
+          <TextBlock Grid.Row="0" Text="Left Drawer"
+                     Style="{StaticResource TitleLarge}" />
+          <TextBlock Grid.Row="1" Text="This drawer slides in from the left edge with swipe gesture support."
+                     Style="{StaticResource BodyMedium}"
+                     Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                     TextWrapping="Wrap" />
+
+          <StackPanel Grid.Row="2" Spacing="4">
+            <TextBlock Text="Navigation" Style="{StaticResource LabelLarge}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+            <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
+                    Style="{StaticResource TextButtonStyle}">
+              <StackPanel Orientation="Horizontal" Spacing="12">
+                <FontIcon Glyph="&#xE80F;" FontSize="18" />
+                <TextBlock Text="Home" Style="{StaticResource BodyLarge}" />
+              </StackPanel>
+            </Button>
+            <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
+                    Style="{StaticResource TextButtonStyle}">
+              <StackPanel Orientation="Horizontal" Spacing="12">
+                <FontIcon Glyph="&#xE771;" FontSize="18" />
+                <TextBlock Text="Favorites" Style="{StaticResource BodyLarge}" />
+              </StackPanel>
+            </Button>
+            <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
+                    Style="{StaticResource TextButtonStyle}">
+              <StackPanel Orientation="Horizontal" Spacing="12">
+                <FontIcon Glyph="&#xE115;" FontSize="18" />
+                <TextBlock Text="Settings" Style="{StaticResource BodyLarge}" />
+              </StackPanel>
+            </Button>
+          </StackPanel>
+
+          <Border Grid.Row="3" Height="1" Background="{ThemeResource OutlineBrush}" />
+
+          <StackPanel Grid.Row="4" Spacing="4">
+            <TextBlock Text="Labels" Style="{StaticResource LabelLarge}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+            <utu:Chip Content="Personal" Style="{StaticResource FilterChipStyle}" />
+            <utu:Chip Content="Work" Style="{StaticResource FilterChipStyle}" />
+          </StackPanel>
+
+          <Button Grid.Row="6" Content="Close Drawer"
+                  Style="{StaticResource OutlinedButtonStyle}"
+                  HorizontalAlignment="Stretch"
+                  Click="CloseLeftDrawer_Click"
+                  AutomationProperties.Name="Close left drawer" />
+        </Grid>
+      </utu:DrawerControl.DrawerContent>
+
+      <utu:DrawerControl.Content>
+        <!-- Second layer: Right Drawer wrapping the scroll content -->
+        <utu:DrawerControl x:Name="RightDrawer"
+                           OpenDirection="Right"
+                           DrawerDepth="300"
+                           IsGestureEnabled="True">
+          <utu:DrawerControl.DrawerContent>
+            <Grid Background="{ThemeResource SurfaceBrush}" Padding="24" RowSpacing="16">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+              </Grid.RowDefinitions>
+
+              <TextBlock Grid.Row="0" Text="Right Drawer"
+                         Style="{StaticResource TitleLarge}" />
+              <TextBlock Grid.Row="1" Text="Slides in from the right. Great for detail panels or filters."
+                         Style="{StaticResource BodyMedium}"
+                         Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                         TextWrapping="Wrap" />
+
+              <StackPanel Grid.Row="2" Spacing="12">
+                <TextBlock Text="Quick Filters" Style="{StaticResource LabelLarge}"
+                           Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+                <ToggleSwitch Header="Show completed" />
+                <ToggleSwitch Header="Show archived" />
+                <ComboBox Header="Sort by" PlaceholderText="Select"
+                          HorizontalAlignment="Stretch">
+                  <ComboBoxItem Content="Date" />
+                  <ComboBoxItem Content="Name" />
+                  <ComboBoxItem Content="Priority" />
+                </ComboBox>
+              </StackPanel>
+
+              <Button Grid.Row="4" Content="Close Drawer"
+                      Style="{StaticResource OutlinedButtonStyle}"
+                      HorizontalAlignment="Stretch"
+                      Click="CloseRightDrawer_Click"
+                      AutomationProperties.Name="Close right drawer" />
+            </Grid>
+          </utu:DrawerControl.DrawerContent>
+
+          <utu:DrawerControl.Content>
+            <!-- Main scrollable content -->
+            <ScrollViewer>
+              <StackPanel Padding="32" Spacing="32" MaxWidth="960"
+                          HorizontalAlignment="Stretch">
+
+                <!-- Page Header -->
+                <TextBlock x:Uid="DrawersPage.Title"
+                           Text="Drawers"
+                           Style="{StaticResource HeadlineLarge}" />
+                <TextBlock x:Uid="DrawersPage.Subtitle"
+                           Text="Drawer panels slide in from the edges of the screen to reveal additional content and navigation."
+                           Style="{StaticResource BodyLarge}"
+                           Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+                <!-- ═══════ Section 1: Interactive Drawers ═══════ -->
+                <TextBlock Text="Interactive Drawers"
+                           Style="{StaticResource TitleLarge}" />
+
+                <Border Background="{ThemeResource SurfaceVariantBrush}"
+                        CornerRadius="16" Padding="24"
+                        Translation="0,0,16">
+                  <Border.Shadow>
+                    <ThemeShadow />
+                  </Border.Shadow>
+
+                  <StackPanel Spacing="12">
+                    <TextBlock Text="Tap the buttons or swipe from the screen edges to open drawers."
+                               Style="{StaticResource BodyMedium}"
+                               Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+                    <!-- Arrow button grid (like WPF original) -->
+                    <Grid HorizontalAlignment="Center" RowSpacing="8" ColumnSpacing="8">
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                      </Grid.ColumnDefinitions>
+
+                      <Button Grid.Row="1" Grid.Column="0"
+                              Click="OpenLeftDrawer_Click"
+                              Style="{StaticResource FilledTonalButtonStyle}"
+                              AutomationProperties.Name="Open left drawer"
+                              MinWidth="56" MinHeight="56">
+                        <FontIcon Glyph="&#xE72B;" FontSize="20" />
+                      </Button>
+
+                      <Button Grid.Row="0" Grid.Column="1"
+                              Click="OpenTopDrawer_Click"
+                              Style="{StaticResource FilledTonalButtonStyle}"
+                              AutomationProperties.Name="Open top flyout"
+                              MinWidth="56" MinHeight="56">
+                        <FontIcon Glyph="&#xE70E;" FontSize="20" />
+                      </Button>
+
+                      <Button Grid.Row="1" Grid.Column="2"
+                              Click="OpenRightDrawer_Click"
+                              Style="{StaticResource FilledTonalButtonStyle}"
+                              AutomationProperties.Name="Open right drawer"
+                              MinWidth="56" MinHeight="56">
+                        <FontIcon Glyph="&#xE72A;" FontSize="20" />
+                      </Button>
+
+                      <Button Grid.Row="2" Grid.Column="1"
+                              Click="OpenBottomDrawer_Click"
+                              Style="{StaticResource FilledTonalButtonStyle}"
+                              AutomationProperties.Name="Open bottom flyout"
+                              MinWidth="56" MinHeight="56">
+                        <FontIcon Glyph="&#xE70D;" FontSize="20" />
+                      </Button>
+                    </Grid>
+
+                    <TextBlock Text="← Left / Right → use DrawerControl with swipe gestures. ↑ Top / ↓ Bottom use flyout panels."
+                               Style="{StaticResource LabelMedium}"
+                               Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                               HorizontalAlignment="Center"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap" />
+                  </StackPanel>
+                </Border>
+
+                <!-- ═══════ Section 2: SplitView Drawer ═══════ -->
+                <TextBlock Text="SplitView as Drawer"
+                           Style="{StaticResource TitleLarge}" />
+
+                <Border Background="{ThemeResource SurfaceVariantBrush}"
+                        CornerRadius="16" Padding="0"
+                        Translation="0,0,16">
+                  <Border.Shadow>
+                    <ThemeShadow />
+                  </Border.Shadow>
+
+                  <SplitView x:Name="DemoSplitView"
+                             DisplayMode="Overlay"
+                             OpenPaneLength="260"
+                             IsPaneOpen="False"
+                             PanePlacement="Left"
+                             MinHeight="320"
+                             PaneBackground="{ThemeResource SurfaceBrush}">
+                    <SplitView.Pane>
+                      <StackPanel Padding="16" Spacing="8">
+                        <TextBlock Text="SplitView Pane" Style="{StaticResource TitleMedium}" />
+                        <TextBlock Text="SplitView provides a built-in overlay or inline pane. Ideal for hamburger menu patterns."
+                                   Style="{StaticResource BodySmall}"
+                                   Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                   TextWrapping="Wrap" />
+                        <Border Height="1" Background="{ThemeResource OutlineBrush}" />
+                        <Button Content="&#xE80F;  Home" Style="{StaticResource TextButtonStyle}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" />
+                        <Button Content="&#xE721;  Search" Style="{StaticResource TextButtonStyle}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" />
+                        <Button Content="&#xE77B;  People" Style="{StaticResource TextButtonStyle}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" />
+                        <Button Content="Close Pane"
+                                Style="{StaticResource OutlinedButtonStyle}"
+                                Click="CloseSplitView_Click"
+                                HorizontalAlignment="Stretch"
+                                AutomationProperties.Name="Close split view pane" />
+                      </StackPanel>
+                    </SplitView.Pane>
+
+                    <SplitView.Content>
+                      <StackPanel Padding="24" Spacing="12"
+                                  VerticalAlignment="Center"
+                                  HorizontalAlignment="Center">
+                        <FontIcon Glyph="&#xE700;" FontSize="32"
+                                  Foreground="{ThemeResource PrimaryBrush}" />
+                        <TextBlock Text="SplitView Demo"
+                                   Style="{StaticResource TitleMedium}"
+                                   HorizontalAlignment="Center" />
+                        <TextBlock Text="Tap the hamburger icon to toggle the pane overlay."
+                                   Style="{StaticResource BodySmall}"
+                                   Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center" />
+                        <Button Style="{StaticResource FilledButtonStyle}"
+                                Click="OpenSplitView_Click"
+                                HorizontalAlignment="Center"
+                                AutomationProperties.Name="Open split view pane">
+                          <StackPanel Orientation="Horizontal" Spacing="8">
+                            <FontIcon Glyph="&#xE700;" FontSize="16" />
+                            <TextBlock Text="Open Pane" />
+                          </StackPanel>
+                        </Button>
+                      </StackPanel>
+                    </SplitView.Content>
+                  </SplitView>
+                </Border>
+
+                <!-- ═══════ Section 3: Drawer Styles Reference ═══════ -->
+                <TextBlock Text="Drawer Patterns"
+                           Style="{StaticResource TitleLarge}" />
+
+                <Border Background="{ThemeResource SurfaceVariantBrush}"
+                        CornerRadius="16" Padding="24"
+                        Translation="0,0,16">
+                  <Border.Shadow>
+                    <ThemeShadow />
+                  </Border.Shadow>
+
+                  <StackPanel Spacing="16">
+                    <TextBlock Text="Common drawer patterns available in Uno Platform."
+                               Style="{StaticResource BodyMedium}"
+                               Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+                    <!-- Pattern 1 -->
+                    <Border Background="{ThemeResource SurfaceBrush}"
+                            CornerRadius="12" Padding="16">
+                      <Grid ColumnSpacing="16">
+                        <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="Auto" />
+                          <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Width="48" Height="48" CornerRadius="12"
+                                Background="{ThemeResource PrimaryContainerBrush}"
+                                Padding="0">
+                          <FontIcon Glyph="&#xE700;" FontSize="20"
+                                    Foreground="{ThemeResource OnPrimaryContainerBrush}"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <StackPanel Grid.Column="1" Spacing="4" VerticalAlignment="Center">
+                          <TextBlock Text="DrawerControl" Style="{StaticResource TitleSmall}" />
+                          <TextBlock Text="Full-screen overlay with swipe gesture support. Opens from Left or Right. Part of Uno Toolkit."
+                                     Style="{StaticResource BodySmall}"
+                                     Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                     TextWrapping="Wrap" />
+                        </StackPanel>
+                      </Grid>
+                    </Border>
+
+                    <!-- Pattern 2 -->
+                    <Border Background="{ThemeResource SurfaceBrush}"
+                            CornerRadius="12" Padding="16">
+                      <Grid ColumnSpacing="16">
+                        <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="Auto" />
+                          <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Width="48" Height="48" CornerRadius="12"
+                                Background="{ThemeResource SecondaryContainerBrush}"
+                                Padding="0">
+                          <FontIcon Glyph="&#xE89F;" FontSize="20"
+                                    Foreground="{ThemeResource OnSecondaryContainerBrush}"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <StackPanel Grid.Column="1" Spacing="4" VerticalAlignment="Center">
+                          <TextBlock Text="SplitView" Style="{StaticResource TitleSmall}" />
+                          <TextBlock Text="Built-in WinUI control with Overlay, Inline, CompactOverlay, and CompactInline modes. Ideal for navigation drawers."
+                                     Style="{StaticResource BodySmall}"
+                                     Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                     TextWrapping="Wrap" />
+                        </StackPanel>
+                      </Grid>
+                    </Border>
+
+                    <!-- Pattern 3 -->
+                    <Border Background="{ThemeResource SurfaceBrush}"
+                            CornerRadius="12" Padding="16">
+                      <Grid ColumnSpacing="16">
+                        <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="Auto" />
+                          <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Width="48" Height="48" CornerRadius="12"
+                                Background="{ThemeResource TertiaryContainerBrush}"
+                                Padding="0">
+                          <FontIcon Glyph="&#xE7C4;" FontSize="20"
+                                    Foreground="{ThemeResource OnTertiaryContainerBrush}"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <StackPanel Grid.Column="1" Spacing="4" VerticalAlignment="Center">
+                          <TextBlock Text="Flyout / Bottom Sheet" Style="{StaticResource TitleSmall}" />
+                          <TextBlock Text="Use Flyout or ContentDialog for top/bottom transient panels. ContentDialog provides a modal bottom-sheet experience."
+                                     Style="{StaticResource BodySmall}"
+                                     Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                     TextWrapping="Wrap" />
+                        </StackPanel>
+                      </Grid>
+                    </Border>
+                  </StackPanel>
+                </Border>
+
+              </StackPanel>
+            </ScrollViewer>
+          </utu:DrawerControl.Content>
+        </utu:DrawerControl>
+      </utu:DrawerControl.Content>
+    </utu:DrawerControl>
+
+    <!-- Top Flyout (simulated as an overlay panel) -->
+    <Grid x:Name="TopDrawerOverlay" Visibility="Collapsed">
+      <Border Background="#80000000" Tapped="CloseTopDrawer_Click" />
+      <Border Background="{ThemeResource SurfaceBrush}"
+              VerticalAlignment="Top" Height="200"
+              CornerRadius="0,0,16,16"
+              Padding="24">
+        <Border.Shadow>
+          <ThemeShadow />
+        </Border.Shadow>
+        <StackPanel Spacing="12" VerticalAlignment="Center" HorizontalAlignment="Center">
+          <TextBlock Text="Top Panel" Style="{StaticResource TitleLarge}"
+                     HorizontalAlignment="Center" />
+          <TextBlock Text="This panel slides down from the top edge."
+                     Style="{StaticResource BodyMedium}"
+                     Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                     HorizontalAlignment="Center" />
+          <Button Content="Close"
+                  Style="{StaticResource OutlinedButtonStyle}"
+                  Click="CloseTopDrawer_Click"
+                  HorizontalAlignment="Center"
+                  AutomationProperties.Name="Close top panel" />
+        </StackPanel>
+      </Border>
+    </Grid>
+
+    <!-- Bottom Flyout (simulated as an overlay panel) -->
+    <Grid x:Name="BottomDrawerOverlay" Visibility="Collapsed">
+      <Border Background="#80000000" Tapped="CloseBottomDrawer_Click" />
+      <Border Background="{ThemeResource SurfaceBrush}"
+              VerticalAlignment="Bottom" Height="200"
+              CornerRadius="16,16,0,0"
+              Padding="24"
+              Translation="0,0,16">
+        <Border.Shadow>
+          <ThemeShadow />
+        </Border.Shadow>
+        <StackPanel Spacing="12" VerticalAlignment="Center" HorizontalAlignment="Center">
+          <TextBlock Text="Bottom Sheet" Style="{StaticResource TitleLarge}"
+                     HorizontalAlignment="Center" />
+          <TextBlock Text="This panel slides up from the bottom. Perfect for mobile-friendly actions."
+                     Style="{StaticResource BodyMedium}"
+                     Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                     HorizontalAlignment="Center"
+                     TextWrapping="Wrap" />
+          <Button Content="Close"
+                  Style="{StaticResource OutlinedButtonStyle}"
+                  Click="CloseBottomDrawer_Click"
+                  HorizontalAlignment="Center"
+                  AutomationProperties.Name="Close bottom panel" />
+        </StackPanel>
+      </Border>
+    </Grid>
+  </Grid>
+</Page>

@@ -1,0 +1,378 @@
+﻿<Page x:Class="UnoMaterialDesign.Presentation.CardsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:ut="using:Uno.Themes"
+      Background="{ThemeResource SurfaceBrush}">
+
+  <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+    <StackPanel Padding="32"
+                Spacing="32"
+                MaxWidth="960"
+                HorizontalAlignment="Center">
+
+      <!-- ==================== SECTION 1: Card Styles ==================== -->
+      <TextBlock x:Uid="CardsPage_StylesTitle"
+                 Text="Card Styles"
+                 Style="{StaticResource HeadlineMedium}" />
+
+      <TextBlock x:Uid="CardsPage_StylesDesc"
+                 Text="Material Design 3 offers three card variants: Elevated, Filled, and Outlined."
+                 Style="{StaticResource BodyMedium}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <Grid ColumnSpacing="24">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Elevated Card -->
+        <utu:Card Style="{StaticResource ElevatedCardStyle}"
+                  HeaderContent="Elevated Card"
+                  SubHeaderContent="With subtle elevation"
+                  AutomationProperties.Name="Elevated Card">
+          <TextBlock Text="This card uses a shadow to provide depth and separation from the background surface."
+                     Style="{StaticResource BodyMedium}"
+                     TextWrapping="Wrap" />
+        </utu:Card>
+
+        <!-- Filled Card -->
+        <utu:Card Grid.Column="1"
+                  Style="{StaticResource FilledCardStyle}"
+                  HeaderContent="Filled Card"
+                  SubHeaderContent="With background fill"
+                  AutomationProperties.Name="Filled Card">
+          <TextBlock Text="This card uses a tinted surface color to distinguish it from the background without elevation."
+                     Style="{StaticResource BodyMedium}"
+                     TextWrapping="Wrap" />
+        </utu:Card>
+
+        <!-- Outlined Card -->
+        <utu:Card Grid.Column="2"
+                  Style="{StaticResource OutlinedCardStyle}"
+                  HeaderContent="Outlined Card"
+                  SubHeaderContent="With border stroke"
+                  AutomationProperties.Name="Outlined Card">
+          <TextBlock Text="This card uses an outline border to define its boundaries. It sits flat on the surface."
+                     Style="{StaticResource BodyMedium}"
+                     TextWrapping="Wrap" />
+        </utu:Card>
+      </Grid>
+
+      <!-- ==================== SECTION 2: Media Cards ==================== -->
+      <TextBlock x:Uid="CardsPage_MediaTitle"
+                 Text="Media Cards"
+                 Style="{StaticResource HeadlineMedium}" />
+
+      <TextBlock x:Uid="CardsPage_MediaDesc"
+                 Text="Cards with images, actions, and rich content layouts."
+                 Style="{StaticResource BodyMedium}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <Grid ColumnSpacing="24">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Media Card 1: Cycling -->
+        <utu:CardContentControl Style="{StaticResource ElevatedCardContentControlStyle}"
+                                AutomationProperties.Name="Cycling Card">
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="140" />
+              <RowDefinition Height="*" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Border CornerRadius="12,12,0,0">
+              <Border.Background>
+                <ImageBrush Stretch="UniformToFill"
+                            ImageSource="https://picsum.photos/id/1015/400/200" />
+              </Border.Background>
+            </Border>
+
+            <Button Grid.Row="0"
+                    Margin="0,0,16,-20"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Style="{StaticResource SmallFabStyle}"
+                    AutomationProperties.Name="Bike FAB">
+              <ut:ControlExtensions.Icon>
+                <FontIcon Glyph="&#xE7A8;" />
+              </ut:ControlExtensions.Icon>
+            </Button>
+
+            <StackPanel Grid.Row="1" Margin="16,28,16,8" Spacing="4">
+              <TextBlock Text="Cycling"
+                         Style="{StaticResource TitleMedium}" />
+              <TextBlock Text="A great way to keep fit and forget about the constant grind of IT."
+                         Style="{StaticResource BodyMedium}"
+                         Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                         TextWrapping="Wrap" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="2"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Margin="8"
+                        Spacing="4">
+              <Button Style="{StaticResource IconButtonStyle}"
+                      AutomationProperties.Name="Share">
+                <ut:ControlExtensions.Icon>
+                  <FontIcon Glyph="&#xE72D;" />
+                </ut:ControlExtensions.Icon>
+              </Button>
+              <Button Style="{StaticResource IconButtonStyle}"
+                      AutomationProperties.Name="Favorite">
+                <ut:ControlExtensions.Icon>
+                  <FontIcon Glyph="&#xEB51;" />
+                </ut:ControlExtensions.Icon>
+              </Button>
+            </StackPanel>
+          </Grid>
+        </utu:CardContentControl>
+
+        <!-- Media Card 2: E.T. Movie -->
+        <utu:CardContentControl Grid.Column="1"
+                                Style="{StaticResource ElevatedCardContentControlStyle}"
+                                AutomationProperties.Name="E.T. Movie Card">
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="140" />
+              <RowDefinition Height="*" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Border CornerRadius="12,12,0,0">
+              <Border.Background>
+                <ImageBrush Stretch="UniformToFill"
+                            ImageSource="https://picsum.photos/id/1062/400/200" />
+              </Border.Background>
+            </Border>
+
+            <Button Grid.Row="0"
+                    Margin="0,0,16,-20"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Style="{StaticResource SmallFabStyle}"
+                    AutomationProperties.Name="Share FAB">
+              <ut:ControlExtensions.Icon>
+                <FontIcon Glyph="&#xE72D;" />
+              </ut:ControlExtensions.Icon>
+            </Button>
+
+            <StackPanel Grid.Row="1" Margin="16,28,16,8" Spacing="4">
+              <TextBlock Text="E.T. the Extra-Terrestrial"
+                         Style="{StaticResource TitleMedium}" />
+              <StackPanel Orientation="Horizontal" Spacing="2">
+                <FontIcon Glyph="&#xE735;" FontSize="14" Foreground="{ThemeResource TertiaryBrush}" />
+                <FontIcon Glyph="&#xE735;" FontSize="14" Foreground="{ThemeResource TertiaryBrush}" />
+                <FontIcon Glyph="&#xE735;" FontSize="14" Foreground="{ThemeResource TertiaryBrush}" />
+                <FontIcon Glyph="&#xE734;" FontSize="14" Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+                <FontIcon Glyph="&#xE734;" FontSize="14" Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+              </StackPanel>
+              <TextBlock Text="After a gentle alien becomes stranded on Earth, the being is discovered and befriended by a young boy."
+                         Style="{StaticResource BodyMedium}"
+                         Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                         TextWrapping="Wrap" />
+            </StackPanel>
+
+            <Border Grid.Row="2"
+                    BorderBrush="{ThemeResource OutlineVariantBrush}"
+                    BorderThickness="0,1,0,0"
+                    Margin="16,0"
+                    Padding="0,8">
+              <StackPanel Spacing="4">
+                <TextBlock Text="Tonight's availability"
+                           Style="{StaticResource LabelLarge}" />
+                <utu:ChipGroup Style="{StaticResource SuggestionChipGroupStyle}"
+                               SelectionMode="Single">
+                  <utu:Chip Content="18:00" IsChecked="True" />
+                  <utu:Chip Content="19:00" />
+                  <utu:Chip Content="22:00" />
+                </utu:ChipGroup>
+              </StackPanel>
+            </Border>
+
+            <Button Grid.Row="3"
+                    Margin="16,4,16,12"
+                    HorizontalAlignment="Left"
+                    Content="RESERVE"
+                    Style="{StaticResource TextButtonStyle}"
+                    AutomationProperties.Name="Reserve" />
+          </Grid>
+        </utu:CardContentControl>
+
+        <!-- Media Card 3: Call Jennifer (colored) -->
+        <utu:CardContentControl Grid.Column="2"
+                                Style="{StaticResource FilledCardContentControlStyle}"
+                                AutomationProperties.Name="Call Jennifer Card">
+          <StackPanel Spacing="8" Margin="16">
+            <TextBlock Text="Call Jennifer"
+                       Style="{StaticResource HeadlineSmall}" />
+            <Border BorderBrush="{ThemeResource OutlineVariantBrush}"
+                    BorderThickness="0,1,0,0"
+                    Padding="0,8,0,0">
+              <Grid>
+                <TextBlock Text="March 19, 2016"
+                           Style="{StaticResource BodyMedium}"
+                           Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                           VerticalAlignment="Center" />
+                <Button HorizontalAlignment="Right"
+                        Style="{StaticResource IconButtonStyle}"
+                        AutomationProperties.Name="Call">
+                  <ut:ControlExtensions.Icon>
+                    <FontIcon Glyph="&#xE717;" />
+                  </ut:ControlExtensions.Icon>
+                </Button>
+              </Grid>
+            </Border>
+          </StackPanel>
+        </utu:CardContentControl>
+      </Grid>
+
+      <!-- ==================== SECTION 3: Text & Notes Cards ==================== -->
+      <TextBlock x:Uid="CardsPage_TextTitle"
+                 Text="Text &amp; Notes Cards"
+                 Style="{StaticResource HeadlineMedium}" />
+
+      <Grid ColumnSpacing="24">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Simple text card -->
+        <utu:Card Style="{StaticResource FilledCardStyle}"
+                  HeaderContent="Simple Text"
+                  AutomationProperties.Name="Simple Text Card">
+          <TextBlock Text="Boring Text"
+                     Style="{StaticResource BodyLarge}" />
+        </utu:Card>
+
+        <!-- Corner radius card -->
+        <utu:Card Grid.Column="1"
+                  Style="{StaticResource OutlinedCardStyle}"
+                  HeaderContent="Outlined Style"
+                  AutomationProperties.Name="Outlined Card">
+          <TextBlock Text="You can adjust the card variant to change visual emphasis."
+                     Style="{StaticResource BodyMedium}"
+                     TextWrapping="Wrap" />
+        </utu:Card>
+
+        <!-- Notes checklist card -->
+        <utu:CardContentControl Grid.Column="2"
+                                Style="{StaticResource ElevatedCardContentControlStyle}"
+                                AutomationProperties.Name="Notes Card">
+          <StackPanel Margin="16" Spacing="4">
+            <TextBlock Text="Notes"
+                       Style="{StaticResource TitleLarge}"
+                       Margin="0,0,0,8" />
+            <CheckBox Content="Start learning Uno Platform"
+                      IsChecked="{Binding Task1Done, Mode=TwoWay}"
+                      AutomationProperties.Name="Task 1" />
+            <CheckBox Content="Take a breather"
+                      IsChecked="{Binding Task2Done, Mode=TwoWay}"
+                      AutomationProperties.Name="Task 2" />
+            <CheckBox Content="And go create"
+                      IsChecked="{Binding Task3Done, Mode=TwoWay}"
+                      AutomationProperties.Name="Task 3" />
+            <Border BorderBrush="{ThemeResource OutlineVariantBrush}"
+                    BorderThickness="0,1,0,0"
+                    Margin="0,8,0,0"
+                    Padding="0,8,0,0">
+              <Button HorizontalAlignment="Right"
+                      Style="{StaticResource IconButtonStyle}"
+                      AutomationProperties.Name="Check All">
+                <ut:ControlExtensions.Icon>
+                  <FontIcon Glyph="&#xE73A;" />
+                </ut:ControlExtensions.Icon>
+              </Button>
+            </Border>
+          </StackPanel>
+        </utu:CardContentControl>
+      </Grid>
+
+      <!-- ==================== SECTION 4: Interactive Flip Card ==================== -->
+      <TextBlock x:Uid="CardsPage_FlipTitle"
+                 Text="Interactive Card"
+                 Style="{StaticResource HeadlineMedium}" />
+
+      <TextBlock x:Uid="CardsPage_FlipDesc"
+                 Text="A card that toggles between front and back content (simulates WPF Flipper control)."
+                 Style="{StaticResource BodyMedium}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <utu:CardContentControl Style="{StaticResource ElevatedCardContentControlStyle}"
+                              MaxWidth="400"
+                              HorizontalAlignment="Left"
+                              AutomationProperties.Name="Flip Card">
+        <Grid MinHeight="280">
+          <!-- Front Content -->
+          <StackPanel Visibility="{Binding IsNotFlipped}"
+                      VerticalAlignment="Center"
+                      Spacing="16"
+                      Margin="24">
+            <Border Height="120"
+                    CornerRadius="12"
+                    Background="{ThemeResource PrimaryContainerBrush}">
+              <FontIcon Glyph="&#xE77B;"
+                        FontSize="56"
+                        Foreground="{ThemeResource OnPrimaryContainerBrush}"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center" />
+            </Border>
+            <TextBlock Text="James Willock"
+                       Style="{StaticResource TitleLarge}"
+                       HorizontalAlignment="Center" />
+            <Button Content="EDIT"
+                    Style="{StaticResource FilledTonalButtonStyle}"
+                    HorizontalAlignment="Center"
+                    Command="{Binding ToggleFlipCommand}"
+                    AutomationProperties.Name="Edit Profile" />
+          </StackPanel>
+
+          <!-- Back Content -->
+          <StackPanel Visibility="{Binding IsFlipped}"
+                      Spacing="12"
+                      Margin="24">
+            <Border Background="{ThemeResource SecondaryContainerBrush}"
+                    CornerRadius="8"
+                    Padding="12,8">
+              <StackPanel Orientation="Horizontal" Spacing="8">
+                <Button Style="{StaticResource IconButtonStyle}"
+                        Command="{Binding ToggleFlipCommand}"
+                        AutomationProperties.Name="Back">
+                  <ut:ControlExtensions.Icon>
+                    <FontIcon Glyph="&#xE72B;" />
+                  </ut:ControlExtensions.Icon>
+                </Button>
+                <TextBlock Text="EDIT USER"
+                           Style="{StaticResource TitleMedium}"
+                           VerticalAlignment="Center" />
+              </StackPanel>
+            </Border>
+            <TextBox Header="First name"
+                     Text="James"
+                     AutomationProperties.Name="First Name" />
+            <TextBox Header="Last name"
+                     Text="Willock"
+                     AutomationProperties.Name="Last Name" />
+            <ToggleSwitch Header="Email Contact"
+                          AutomationProperties.Name="Email Contact" />
+            <ToggleSwitch Header="Telephone Contact"
+                          AutomationProperties.Name="Telephone Contact" />
+          </StackPanel>
+        </Grid>
+      </utu:CardContentControl>
+
+    </StackPanel>
+  </ScrollViewer>
+</Page>

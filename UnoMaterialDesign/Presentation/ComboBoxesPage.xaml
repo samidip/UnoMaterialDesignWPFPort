@@ -1,0 +1,306 @@
+﻿<Page x:Class="UnoMaterialDesign.Presentation.ComboBoxesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:ut="using:Uno.Themes"
+      Background="{ThemeResource SurfaceBrush}">
+
+  <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+    <StackPanel Padding="32"
+                Spacing="32"
+                MaxWidth="960"
+                HorizontalAlignment="Center">
+
+      <!-- ==================== SECTION 1: Basic ComboBoxes ==================== -->
+      <TextBlock x:Uid="ComboBoxesPage_BasicTitle"
+                 Text="ComboBoxes"
+                 Style="{StaticResource HeadlineMedium}" />
+
+      <StackPanel Spacing="16">
+        <TextBlock x:Uid="ComboBoxesPage_BasicDesc"
+                   Text="Standard ComboBox controls with various configurations."
+                   Style="{StaticResource BodyMedium}"
+                   Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+        <Grid ColumnSpacing="24"
+              RowSpacing="16">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+
+          <!-- Basic ComboBox -->
+          <ComboBox x:Uid="ComboBoxesPage_OS"
+                    Header="OS"
+                    PlaceholderText="Select OS"
+                    AutomationProperties.Name="OS Selection">
+            <ComboBoxItem Content="Android" />
+            <ComboBoxItem Content="iOS" />
+            <ComboBoxItem Content="Linux" />
+            <ComboBoxItem Content="Windows" />
+          </ComboBox>
+
+          <!-- Editable ComboBox -->
+          <ComboBox x:Uid="ComboBoxesPage_Search"
+                    Grid.Column="1"
+                    Header="Search"
+                    PlaceholderText="Type to search"
+                    IsEditable="True"
+                    AutomationProperties.Name="Search ComboBox">
+            <ComboBoxItem Content="Apple" />
+            <ComboBoxItem Content="Banana" />
+            <ComboBoxItem Content="Pear" />
+            <ComboBoxItem Content="Orange" />
+          </ComboBox>
+
+          <!-- Floating Hint ComboBox with helper -->
+          <ComboBox x:Uid="ComboBoxesPage_OSHint"
+                    Grid.Column="2"
+                    Header="OS"
+                    PlaceholderText="Select one OS"
+                    AutomationProperties.Name="OS with Hint">
+            <ComboBoxItem Content="Android" />
+            <ComboBoxItem Content="iOS" />
+            <ComboBoxItem Content="Linux" />
+            <ComboBoxItem Content="Windows" />
+          </ComboBox>
+
+          <!-- Disabled ComboBox -->
+          <ComboBox x:Uid="ComboBoxesPage_Disabled"
+                    Grid.Column="3"
+                    Header="Disabled"
+                    PlaceholderText="Can't touch this"
+                    IsEnabled="False"
+                    SelectedIndex="0"
+                    AutomationProperties.Name="Disabled ComboBox">
+            <ComboBoxItem Content="Selected" />
+          </ComboBox>
+        </Grid>
+      </StackPanel>
+
+      <!-- ==================== SECTION 2: Display Selected Item ==================== -->
+      <Border Background="{ThemeResource SurfaceVariantBrush}"
+              CornerRadius="16"
+              Padding="24"
+              Translation="0,0,8">
+        <Border.Shadow>
+          <ThemeShadow />
+        </Border.Shadow>
+        <StackPanel Spacing="16">
+          <TextBlock x:Uid="ComboBoxesPage_DisplaySelectedTitle"
+                     Text="Display Options"
+                     Style="{StaticResource TitleLarge}" />
+
+          <ToggleSwitch x:Uid="ComboBoxesPage_ShowSelectedToggle"
+                        Header="Show Selected Item in Drop Down"
+                        IsOn="{Binding ShowSelectedInDropDown, Mode=TwoWay}"
+                        AutomationProperties.Name="Show Selected Item Toggle" />
+
+          <ComboBox x:Uid="ComboBoxesPage_FruitSelect"
+                    Header="Fruit"
+                    PlaceholderText="Pick a fruit"
+                    ItemsSource="{Binding FruitList}"
+                    SelectedItem="{Binding SelectedFruit, Mode=TwoWay}"
+                    AutomationProperties.Name="Fruit Selection" />
+
+          <TextBlock Style="{StaticResource BodyMedium}"
+                     Foreground="{ThemeResource OnSurfaceVariantBrush}">
+            <Run Text="Selected:" />
+            <Run Text="{Binding SelectedFruit}" FontWeight="Bold" />
+          </TextBlock>
+        </StackPanel>
+      </Border>
+
+      <!-- ==================== SECTION 3: Virtualised / Data-bound ComboBoxes ==================== -->
+      <TextBlock x:Uid="ComboBoxesPage_VirtualisedTitle"
+                 Text="Virtualised ComboBoxes"
+                 Style="{StaticResource HeadlineMedium}" />
+
+      <StackPanel Spacing="16">
+        <TextBlock x:Uid="ComboBoxesPage_VirtualisedDesc"
+                   Text="ComboBoxes bound to large data collections (1,000 items)."
+                   Style="{StaticResource BodyMedium}"
+                   Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+        <Grid ColumnSpacing="24"
+              RowSpacing="16">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+
+          <!-- Bound to integer list -->
+          <ComboBox x:Uid="ComboBoxesPage_IntList"
+                    Header="Virtualisation"
+                    PlaceholderText="Select number"
+                    ItemsSource="{Binding LongIntegerList}"
+                    SelectedItem="{Binding SelectedValueOne, Mode=TwoWay}"
+                    AutomationProperties.Name="Integer List ComboBox" />
+
+          <!-- Editable bound list -->
+          <ComboBox x:Uid="ComboBoxesPage_EditableIntList"
+                    Grid.Column="1"
+                    Header="Editable"
+                    PlaceholderText="Type or select"
+                    IsEditable="True"
+                    ItemsSource="{Binding LongIntegerList}"
+                    Text="{Binding SelectedTextTwo, Mode=TwoWay}"
+                    AutomationProperties.Name="Editable Integer List" />
+
+          <!-- Floating hint bound list -->
+          <ComboBox x:Uid="ComboBoxesPage_FloatHintList"
+                    Grid.Column="2"
+                    Header="Float Hint"
+                    PlaceholderText="Select number"
+                    ItemsSource="{Binding LongIntegerList}"
+                    AutomationProperties.Name="Float Hint Integer List" />
+        </Grid>
+
+        <!-- Binding preview -->
+        <TextBlock Style="{StaticResource BodyMedium}"
+                   Foreground="{ThemeResource OnSurfaceVariantBrush}">
+          <Run Text="Selected Value:" />
+          <Run Text="{Binding SelectedValueOne}" FontWeight="Bold" />
+          <Run Text=" | Editable Text:" />
+          <Run Text="{Binding SelectedTextTwo}" FontWeight="Bold" />
+        </TextBlock>
+      </StackPanel>
+
+      <!-- ==================== SECTION 4: Styled ComboBoxes ==================== -->
+      <TextBlock x:Uid="ComboBoxesPage_StyledTitle"
+                 Text="Styled ComboBoxes"
+                 Style="{StaticResource HeadlineMedium}" />
+
+      <Grid ColumnSpacing="24">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Filled-style card -->
+        <Border Background="{ThemeResource SurfaceVariantBrush}"
+                CornerRadius="16"
+                Padding="24"
+                Translation="0,0,8">
+          <Border.Shadow>
+            <ThemeShadow />
+          </Border.Shadow>
+          <StackPanel Spacing="16">
+            <TextBlock x:Uid="ComboBoxesPage_FilledTitle"
+                       Text="Filled ComboBox"
+                       Style="{StaticResource TitleLarge}" />
+
+            <Grid ColumnSpacing="16">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+              </Grid.ColumnDefinitions>
+
+              <ToggleSwitch x:Uid="ComboBoxesPage_FilledEnabled"
+                            Header="Enabled"
+                            IsOn="{Binding FilledEnabled, Mode=TwoWay}"
+                            AutomationProperties.Name="Filled Enabled" />
+
+              <Button Grid.Column="1"
+                      Style="{StaticResource TextButtonStyle}"
+                      Content="Clear"
+                      VerticalAlignment="Center"
+                      Command="{Binding ClearFilledSelectionCommand}"
+                      AutomationProperties.Name="Clear Filled" />
+            </Grid>
+
+            <ComboBox x:Uid="ComboBoxesPage_FilledCombo"
+                      Header="Some item"
+                      PlaceholderText="Select item"
+                      IsEnabled="{Binding FilledEnabled}"
+                      SelectedItem="{Binding SelectedFilledItem, Mode=TwoWay}"
+                      HorizontalAlignment="Stretch"
+                      AutomationProperties.Name="Filled ComboBox">
+              <ComboBoxItem Content="Item 1" />
+              <ComboBoxItem Content="Item 2" />
+              <ComboBoxItem Content="Item 3" />
+            </ComboBox>
+
+            <!-- Validation-style: bound to ShortStringList -->
+            <ComboBox x:Uid="ComboBoxesPage_FilledValidation"
+                      Header="Validation test"
+                      PlaceholderText="Select to validate"
+                      ItemsSource="{Binding ShortStringList}"
+                      SelectedItem="{Binding SelectedValidation, Mode=TwoWay}"
+                      HorizontalAlignment="Stretch"
+                      AutomationProperties.Name="Filled Validation ComboBox" />
+
+            <TextBlock Style="{StaticResource BodyMedium}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}">
+              <Run Text="Selected:" />
+              <Run Text="{Binding SelectedFilledItem}" FontWeight="Bold" />
+            </TextBlock>
+          </StackPanel>
+        </Border>
+
+        <!-- Outlined-style card -->
+        <Border Grid.Column="1"
+                Background="{ThemeResource SurfaceVariantBrush}"
+                CornerRadius="16"
+                Padding="24"
+                Translation="0,0,8">
+          <Border.Shadow>
+            <ThemeShadow />
+          </Border.Shadow>
+          <StackPanel Spacing="16">
+            <TextBlock x:Uid="ComboBoxesPage_OutlinedTitle"
+                       Text="Outlined ComboBox"
+                       Style="{StaticResource TitleLarge}" />
+
+            <Grid ColumnSpacing="16">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+              </Grid.ColumnDefinitions>
+
+              <ToggleSwitch x:Uid="ComboBoxesPage_OutlinedEnabled"
+                            Header="Enabled"
+                            IsOn="{Binding OutlinedEnabled, Mode=TwoWay}"
+                            AutomationProperties.Name="Outlined Enabled" />
+
+              <Button Grid.Column="1"
+                      Style="{StaticResource TextButtonStyle}"
+                      Content="Clear"
+                      VerticalAlignment="Center"
+                      Command="{Binding ClearOutlinedSelectionCommand}"
+                      AutomationProperties.Name="Clear Outlined" />
+            </Grid>
+
+            <ComboBox x:Uid="ComboBoxesPage_OutlinedCombo"
+                      Header="Some item"
+                      PlaceholderText="Select item"
+                      IsEnabled="{Binding OutlinedEnabled}"
+                      ItemsSource="{Binding ShortStringList}"
+                      SelectedItem="{Binding SelectedOutlinedItem, Mode=TwoWay}"
+                      HorizontalAlignment="Stretch"
+                      AutomationProperties.Name="Outlined ComboBox" />
+
+            <!-- OS list bound -->
+            <ComboBox x:Uid="ComboBoxesPage_OutlinedOS"
+                      Header="Operating System"
+                      PlaceholderText="Select OS"
+                      ItemsSource="{Binding OsList}"
+                      HorizontalAlignment="Stretch"
+                      AutomationProperties.Name="Outlined OS ComboBox" />
+
+            <TextBlock Style="{StaticResource BodyMedium}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}">
+              <Run Text="Selected:" />
+              <Run Text="{Binding SelectedOutlinedItem}" FontWeight="Bold" />
+            </TextBlock>
+          </StackPanel>
+        </Border>
+      </Grid>
+
+    </StackPanel>
+  </ScrollViewer>
+</Page>

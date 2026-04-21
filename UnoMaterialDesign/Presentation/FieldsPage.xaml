@@ -1,0 +1,344 @@
+﻿<Page x:Class="UnoMaterialDesign.Presentation.FieldsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:ut="using:Uno.Themes"
+      Background="{ThemeResource SurfaceBrush}">
+
+  <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+    <StackPanel Padding="32"
+                Spacing="32"
+                MaxWidth="960"
+                HorizontalAlignment="Center">
+
+      <!-- ==================== SECTION 1: Common Fields ==================== -->
+      <TextBlock x:Uid="FieldsPage_CommonFields"
+                 Text="Common Fields"
+                 Style="{StaticResource HeadlineMedium}" />
+
+      <Grid ColumnSpacing="32"
+            RowSpacing="16">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Row 0, Col 0: Name with icon -->
+        <TextBox x:Uid="FieldsPage_Name"
+                 Header="Name"
+                 PlaceholderText="Enter your name"
+                 Text="{Binding Name, Mode=TwoWay}"
+                 AutomationProperties.Name="Name">
+          <ut:ControlExtensions.Icon>
+            <FontIcon Glyph="&#xE77B;" />
+          </ut:ControlExtensions.Icon>
+        </TextBox>
+
+        <!-- Row 1, Col 0: Phone -->
+        <TextBox x:Uid="FieldsPage_Phone"
+                 Grid.Row="1"
+                 Header="Phone"
+                 PlaceholderText="Enter phone number"
+                 MaxLength="12"
+                 InputScope="TelephoneNumber"
+                 Text="{Binding Phone, Mode=TwoWay}"
+                 AutomationProperties.Name="Phone">
+          <ut:ControlExtensions.Icon>
+            <FontIcon Glyph="&#xE717;" />
+          </ut:ControlExtensions.Icon>
+        </TextBox>
+
+        <!-- Row 2, Col 0: Comment -->
+        <TextBox x:Uid="FieldsPage_Comment"
+                 Grid.Row="2"
+                 Header="Comment"
+                 PlaceholderText="Write a comment"
+                 Text="{Binding Comment, Mode=TwoWay}"
+                 AutomationProperties.Name="Comment">
+          <ut:ControlExtensions.Icon>
+            <FontIcon Glyph="&#xE8BD;" />
+          </ut:ControlExtensions.Icon>
+        </TextBox>
+
+        <!-- Row 3, Col 0: Floating Hint (Filled style) -->
+        <TextBox x:Uid="FieldsPage_FloatingHint"
+                 Grid.Row="3"
+                 Header="Floating Hint"
+                 PlaceholderText="Type something here"
+                 Style="{StaticResource FilledTextBoxStyle}"
+                 Text="{Binding FloatingHintText, Mode=TwoWay}"
+                 AutomationProperties.Name="Floating Hint" />
+
+        <!-- Row 4, Col 0: Prefix/Suffix text -->
+        <TextBox x:Uid="FieldsPage_PrefixSuffix"
+                 Grid.Row="4"
+                 Header="WiFi Signal"
+                 PlaceholderText="Value"
+                 Text="{Binding PrefixSuffixText, Mode=TwoWay}"
+                 AutomationProperties.Name="WiFi Signal">
+          <ut:ControlExtensions.Icon>
+            <FontIcon Glyph="&#xE701;" />
+          </ut:ControlExtensions.Icon>
+        </TextBox>
+
+        <!-- Row 0, Col 1: Password -->
+        <PasswordBox x:Uid="FieldsPage_Password"
+                     Grid.Column="1"
+                     Header="Password"
+                     PlaceholderText="Enter password"
+                     AutomationProperties.Name="Password">
+          <ut:ControlExtensions.Icon>
+            <FontIcon Glyph="&#xE72E;" />
+          </ut:ControlExtensions.Icon>
+        </PasswordBox>
+
+        <!-- Row 1, Col 1: Floating Password (Filled) -->
+        <PasswordBox x:Uid="FieldsPage_FloatingPassword"
+                     Grid.Row="1"
+                     Grid.Column="1"
+                     Header="Floating Password"
+                     PlaceholderText="Enter password"
+                     Style="{StaticResource FilledPasswordBoxStyle}"
+                     AutomationProperties.Name="Floating Password">
+          <ut:ControlExtensions.Icon>
+            <FontIcon Glyph="&#xE72E;" />
+          </ut:ControlExtensions.Icon>
+        </PasswordBox>
+
+        <!-- Row 2, Col 1: Large Font Text -->
+        <TextBox x:Uid="FieldsPage_LargeFont"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 Header="Large Font"
+                 Text="Some Text"
+                 FontSize="24"
+                 Style="{StaticResource FilledTextBoxStyle}"
+                 AutomationProperties.Name="Large Font" />
+
+        <!-- Row 3, Col 1: Disabled TextBox -->
+        <TextBox x:Uid="FieldsPage_DisabledText"
+                 Grid.Row="3"
+                 Grid.Column="1"
+                 Header="Disabled"
+                 PlaceholderText="I'm Disabled"
+                 IsEnabled="False"
+                 AutomationProperties.Name="Disabled Text" />
+
+        <!-- Row 4, Col 1: Disabled PasswordBox -->
+        <PasswordBox x:Uid="FieldsPage_DisabledPassword"
+                     Grid.Row="4"
+                     Grid.Column="1"
+                     Header="Disabled Password"
+                     Password="01234"
+                     IsEnabled="False"
+                     AutomationProperties.Name="Disabled Password" />
+      </Grid>
+
+      <!-- Multiline TextArea (full width) -->
+      <TextBox x:Uid="FieldsPage_Multiline"
+               Header="Multiline text"
+               PlaceholderText="Enter multiline text..."
+               Text="{Binding MultilineText, Mode=TwoWay}"
+               AcceptsReturn="True"
+               TextWrapping="Wrap"
+               Height="120"
+               ScrollViewer.VerticalScrollBarVisibility="Auto"
+               AutomationProperties.Name="Multiline Text" />
+
+      <!-- ==================== SECTION 2: Filled Fields ==================== -->
+      <TextBlock x:Uid="FieldsPage_FilledFields"
+                 Text="Filled Fields"
+                 Style="{StaticResource HeadlineMedium}"
+                 Margin="0,16,0,0" />
+
+      <Grid ColumnSpacing="24"
+            RowSpacing="16">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Filled TextBox with toggle -->
+        <StackPanel Spacing="12">
+          <ToggleSwitch x:Uid="FieldsPage_FilledTextEnabled"
+                        Header="Enabled"
+                        IsOn="{Binding FilledTextEnabled, Mode=TwoWay}"
+                        AutomationProperties.Name="Filled Text Enabled" />
+
+          <TextBox x:Uid="FieldsPage_FilledText"
+                   Header="Floating hint in a box"
+                   PlaceholderText="Type here..."
+                   AcceptsReturn="True"
+                   TextWrapping="Wrap"
+                   IsEnabled="{Binding FilledTextEnabled}"
+                   Style="{StaticResource FilledTextBoxStyle}"
+                   AutomationProperties.Name="Filled TextBox" />
+        </StackPanel>
+
+        <!-- Filled PasswordBox with toggle -->
+        <StackPanel Grid.Column="1" Spacing="12">
+          <ToggleSwitch x:Uid="FieldsPage_FilledPasswordEnabled"
+                        Header="Enabled"
+                        IsOn="{Binding FilledPasswordEnabled, Mode=TwoWay}"
+                        AutomationProperties.Name="Filled Password Enabled" />
+
+          <PasswordBox x:Uid="FieldsPage_FilledPassword"
+                       Header="Password"
+                       PlaceholderText="Enter password"
+                       IsEnabled="{Binding FilledPasswordEnabled}"
+                       Style="{StaticResource FilledPasswordBoxStyle}"
+                       AutomationProperties.Name="Filled PasswordBox" />
+        </StackPanel>
+      </Grid>
+
+      <!-- ==================== SECTION 3: Outlined Fields ==================== -->
+      <TextBlock x:Uid="FieldsPage_OutlinedFields"
+                 Text="Outlined Fields"
+                 Style="{StaticResource HeadlineMedium}"
+                 Margin="0,16,0,0" />
+
+      <Grid ColumnSpacing="24"
+            RowSpacing="16">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Outlined TextArea with toggle -->
+        <StackPanel Spacing="12">
+          <ToggleSwitch x:Uid="FieldsPage_OutlinedTextEnabled"
+                        Header="Enabled"
+                        IsOn="{Binding OutlinedTextEnabled, Mode=TwoWay}"
+                        AutomationProperties.Name="Outlined Text Enabled" />
+
+          <TextBox x:Uid="FieldsPage_OutlinedText"
+                   Header="This is a text area"
+                   PlaceholderText="Type here..."
+                   AcceptsReturn="True"
+                   TextWrapping="Wrap"
+                   Height="100"
+                   ScrollViewer.VerticalScrollBarVisibility="Auto"
+                   IsEnabled="{Binding OutlinedTextEnabled}"
+                   Style="{StaticResource OutlinedTextBoxStyle}"
+                   AutomationProperties.Name="Outlined TextBox" />
+        </StackPanel>
+
+        <!-- Outlined TextBox with max length -->
+        <StackPanel Grid.Column="1" Spacing="12">
+          <ToggleSwitch x:Uid="FieldsPage_OutlinedCounterEnabled"
+                        Header="Enabled"
+                        IsOn="{Binding OutlinedCounterEnabled, Mode=TwoWay}"
+                        AutomationProperties.Name="Outlined Counter Enabled" />
+
+          <TextBox x:Uid="FieldsPage_OutlinedCounter"
+                   Header="Limited text area"
+                   PlaceholderText="Max 40 characters"
+                   MaxLength="40"
+                   AcceptsReturn="True"
+                   TextWrapping="Wrap"
+                   Height="100"
+                   ScrollViewer.VerticalScrollBarVisibility="Auto"
+                   IsEnabled="{Binding OutlinedCounterEnabled}"
+                   Style="{StaticResource OutlinedTextBoxStyle}"
+                   AutomationProperties.Name="Outlined Counter TextBox" />
+        </StackPanel>
+
+        <!-- Outlined PasswordBox with toggle -->
+        <StackPanel Grid.Column="2" Spacing="12">
+          <ToggleSwitch x:Uid="FieldsPage_OutlinedPasswordEnabled"
+                        Header="Enabled"
+                        IsOn="{Binding OutlinedPasswordEnabled, Mode=TwoWay}"
+                        AutomationProperties.Name="Outlined Password Enabled" />
+
+          <PasswordBox x:Uid="FieldsPage_OutlinedPassword"
+                       Header="Password"
+                       PlaceholderText="Enter password"
+                       IsEnabled="{Binding OutlinedPasswordEnabled}"
+                       Style="{StaticResource OutlinedPasswordBoxStyle}"
+                       AutomationProperties.Name="Outlined PasswordBox" />
+        </StackPanel>
+      </Grid>
+
+      <!-- ==================== SECTION 4: Data Template ==================== -->
+      <TextBlock x:Uid="FieldsPage_DataTemplate"
+                 Text="Data Binding"
+                 Style="{StaticResource HeadlineMedium}"
+                 Margin="0,16,0,0" />
+
+      <Border Background="{ThemeResource SurfaceVariantBrush}"
+              CornerRadius="16"
+              Padding="24"
+              Translation="0,0,8">
+        <Border.Shadow>
+          <ThemeShadow />
+        </Border.Shadow>
+        <StackPanel Spacing="16">
+          <TextBlock x:Uid="FieldsPage_BindingDemo_Title"
+                     Text="Two-Way Binding Demo"
+                     Style="{StaticResource TitleMedium}" />
+
+          <Grid ColumnSpacing="16" RowSpacing="12">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBox x:Uid="FieldsPage_TemplateName"
+                     Header="Name"
+                     PlaceholderText="Enter name"
+                     Text="{Binding TemplateName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     AutomationProperties.Name="Template Name" />
+
+            <TextBox x:Uid="FieldsPage_TemplateContent"
+                     Grid.Column="1"
+                     Header="Content"
+                     PlaceholderText="Enter content"
+                     Text="{Binding TemplateContent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     AutomationProperties.Name="Template Content" />
+
+            <!-- Mirror: Filled style -->
+            <TextBox x:Uid="FieldsPage_TemplateNameFilled"
+                     Grid.Row="1"
+                     Header="Name (Filled)"
+                     PlaceholderText="Mirrors above"
+                     Text="{Binding TemplateName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Style="{StaticResource FilledTextBoxStyle}"
+                     AutomationProperties.Name="Template Name Filled" />
+
+            <TextBox x:Uid="FieldsPage_TemplateContentFilled"
+                     Grid.Row="1"
+                     Grid.Column="1"
+                     Header="Content (Filled)"
+                     PlaceholderText="Mirrors above"
+                     Text="{Binding TemplateContent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Style="{StaticResource FilledTextBoxStyle}"
+                     AutomationProperties.Name="Template Content Filled" />
+          </Grid>
+
+          <TextBlock Style="{StaticResource BodyMedium}"
+                     Foreground="{ThemeResource OnSurfaceVariantBrush}">
+            <Run Text="Bound Name:" />
+            <Run Text="{Binding TemplateName}" FontWeight="Bold" />
+            <Run Text=" | Bound Content:" />
+            <Run Text="{Binding TemplateContent}" FontWeight="Bold" />
+          </TextBlock>
+        </StackPanel>
+      </Border>
+
+    </StackPanel>
+  </ScrollViewer>
+</Page>
+

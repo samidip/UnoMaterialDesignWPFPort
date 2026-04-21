@@ -1,0 +1,509 @@
+﻿<Page x:Class="UnoMaterialDesign.Presentation.ButtonsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:ut="using:Uno.Themes"
+      xmlns:local="using:UnoMaterialDesign.Presentation"
+      Background="{ThemeResource SurfaceBrush}">
+
+  <Page.DataContext>
+    <local:ButtonsViewModel />
+  </Page.DataContext>
+
+  <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+    <StackPanel Padding="32"
+                Spacing="24"
+                MaxWidth="960"
+                HorizontalAlignment="Stretch">
+
+      <!-- Page Title -->
+      <TextBlock x:Uid="ButtonsPage_Title"
+                 Text="Buttons"
+                 Style="{StaticResource HeadlineLarge}" />
+      <TextBlock x:Uid="ButtonsPage_Subtitle"
+                 Text="Material Design 3 button styles and variants"
+                 Style="{StaticResource BodyLarge}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <!-- Enable / Disable toggle -->
+      <StackPanel Orientation="Horizontal" Spacing="12">
+        <ToggleSwitch x:Uid="ButtonsPage_EnableToggle"
+                      IsOn="{Binding ControlsEnabled, Mode=TwoWay}"
+                      OffContent="Controls Disabled"
+                      OnContent="Controls Enabled" />
+      </StackPanel>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SECTION 1: Standard Buttons                 -->
+      <!-- ════════════════════════════════════════════ -->
+      <Border Height="1" Background="{ThemeResource OutlineVariantBrush}" />
+      <TextBlock x:Uid="ButtonsPage_StandardHeading"
+                 Text="Standard Buttons"
+                 Style="{StaticResource TitleLarge}" />
+      <TextBlock x:Uid="ButtonsPage_StandardDesc"
+                 Text="The five standard button types from Material Design 3."
+                 Style="{StaticResource BodyMedium}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <!-- Row: Filled -->
+      <StackPanel Spacing="8">
+        <TextBlock Text="Filled" Style="{StaticResource LabelLarge}" />
+        <StackPanel Orientation="Horizontal" Spacing="12">
+          <Button x:Uid="ButtonsPage_Filled"
+                  Content="Filled"
+                  Style="{StaticResource FilledButtonStyle}"
+                  IsEnabled="{Binding ControlsEnabled}" />
+          <Button x:Uid="ButtonsPage_FilledDisabled"
+                  Content="Disabled"
+                  Style="{StaticResource FilledButtonStyle}"
+                  IsEnabled="False" />
+          <Button x:Uid="ButtonsPage_FilledIcon"
+                  Style="{StaticResource FilledButtonStyle}"
+                  IsEnabled="{Binding ControlsEnabled}">
+            <StackPanel Orientation="Horizontal" Spacing="8">
+              <FontIcon Glyph="&#xE710;" FontSize="16" />
+              <TextBlock Text="With Icon" VerticalAlignment="Center" />
+            </StackPanel>
+          </Button>
+        </StackPanel>
+      </StackPanel>
+
+      <!-- Row: Filled Tonal -->
+      <StackPanel Spacing="8">
+        <TextBlock Text="Filled Tonal" Style="{StaticResource LabelLarge}" />
+        <StackPanel Orientation="Horizontal" Spacing="12">
+          <Button x:Uid="ButtonsPage_Tonal"
+                  Content="Tonal"
+                  Style="{StaticResource FilledTonalButtonStyle}"
+                  IsEnabled="{Binding ControlsEnabled}" />
+          <Button x:Uid="ButtonsPage_TonalDisabled"
+                  Content="Disabled"
+                  Style="{StaticResource FilledTonalButtonStyle}"
+                  IsEnabled="False" />
+          <Button x:Uid="ButtonsPage_TonalIcon"
+                  Style="{StaticResource FilledTonalButtonStyle}"
+                  IsEnabled="{Binding ControlsEnabled}">
+            <StackPanel Orientation="Horizontal" Spacing="8">
+              <FontIcon Glyph="&#xE8FB;" FontSize="16" />
+              <TextBlock Text="With Icon" VerticalAlignment="Center" />
+            </StackPanel>
+          </Button>
+        </StackPanel>
+      </StackPanel>
+
+      <!-- Row: Outlined -->
+      <StackPanel Spacing="8">
+        <TextBlock Text="Outlined" Style="{StaticResource LabelLarge}" />
+        <StackPanel Orientation="Horizontal" Spacing="12">
+          <Button x:Uid="ButtonsPage_Outlined"
+                  Content="Outlined"
+                  Style="{StaticResource OutlinedButtonStyle}"
+                  IsEnabled="{Binding ControlsEnabled}" />
+          <Button x:Uid="ButtonsPage_OutlinedDisabled"
+                  Content="Disabled"
+                  Style="{StaticResource OutlinedButtonStyle}"
+                  IsEnabled="False" />
+          <Button x:Uid="ButtonsPage_OutlinedIcon"
+                  Style="{StaticResource OutlinedButtonStyle}"
+                  IsEnabled="{Binding ControlsEnabled}">
+            <StackPanel Orientation="Horizontal" Spacing="8">
+              <FontIcon Glyph="&#xE8F1;" FontSize="16" />
+              <TextBlock Text="With Icon" VerticalAlignment="Center" />
+            </StackPanel>
+          </Button>
+        </StackPanel>
+      </StackPanel>
+
+      <!-- Row: Text -->
+      <StackPanel Spacing="8">
+        <TextBlock Text="Text" Style="{StaticResource LabelLarge}" />
+        <StackPanel Orientation="Horizontal" Spacing="12">
+          <Button x:Uid="ButtonsPage_Text"
+                  Content="Text"
+                  Style="{StaticResource TextButtonStyle}"
+                  IsEnabled="{Binding ControlsEnabled}" />
+          <Button x:Uid="ButtonsPage_TextDisabled"
+                  Content="Disabled"
+                  Style="{StaticResource TextButtonStyle}"
+                  IsEnabled="False" />
+          <Button x:Uid="ButtonsPage_TextIcon"
+                  Style="{StaticResource TextButtonStyle}"
+                  IsEnabled="{Binding ControlsEnabled}">
+            <StackPanel Orientation="Horizontal" Spacing="8">
+              <FontIcon Glyph="&#xE71B;" FontSize="16" />
+              <TextBlock Text="With Icon" VerticalAlignment="Center" />
+            </StackPanel>
+          </Button>
+        </StackPanel>
+      </StackPanel>
+
+      <!-- Row: Elevated -->
+      <StackPanel Spacing="8">
+        <TextBlock Text="Elevated" Style="{StaticResource LabelLarge}" />
+        <StackPanel Orientation="Horizontal" Spacing="12">
+          <Button x:Uid="ButtonsPage_Elevated"
+                  Content="Elevated"
+                  Style="{StaticResource ElevatedButtonStyle}"
+                  IsEnabled="{Binding ControlsEnabled}" />
+          <Button x:Uid="ButtonsPage_ElevatedDisabled"
+                  Content="Disabled"
+                  Style="{StaticResource ElevatedButtonStyle}"
+                  IsEnabled="False" />
+          <Button x:Uid="ButtonsPage_ElevatedIcon"
+                  Style="{StaticResource ElevatedButtonStyle}"
+                  IsEnabled="{Binding ControlsEnabled}">
+            <StackPanel Orientation="Horizontal" Spacing="8">
+              <FontIcon Glyph="&#xE734;" FontSize="16" />
+              <TextBlock Text="With Icon" VerticalAlignment="Center" />
+            </StackPanel>
+          </Button>
+        </StackPanel>
+      </StackPanel>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SECTION 2: Floating Action Buttons          -->
+      <!-- ════════════════════════════════════════════ -->
+      <Border Height="1" Background="{ThemeResource OutlineVariantBrush}" Margin="0,8,0,0" />
+      <TextBlock x:Uid="ButtonsPage_FabHeading"
+                 Text="Floating Action Buttons"
+                 Style="{StaticResource TitleLarge}" />
+      <TextBlock x:Uid="ButtonsPage_FabDesc"
+                 Text="FABs represent the most important action on a screen."
+                 Style="{StaticResource BodyMedium}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <!-- FAB Sizes -->
+      <StackPanel Spacing="8">
+        <TextBlock Text="Sizes" Style="{StaticResource LabelLarge}" />
+        <StackPanel Orientation="Horizontal" Spacing="16" VerticalAlignment="Center">
+          <Button x:Uid="ButtonsPage_SmallFab"
+                  Style="{StaticResource SmallFabStyle}"
+                  IsEnabled="{Binding ControlsEnabled}"
+                  AutomationProperties.Name="Small FAB">
+            <ut:ControlExtensions.Icon>
+              <FontIcon Glyph="&#xE710;" />
+            </ut:ControlExtensions.Icon>
+          </Button>
+          <Button x:Uid="ButtonsPage_Fab"
+                  Style="{StaticResource FabStyle}"
+                  IsEnabled="{Binding ControlsEnabled}"
+                  AutomationProperties.Name="FAB">
+            <ut:ControlExtensions.Icon>
+              <FontIcon Glyph="&#xE710;" />
+            </ut:ControlExtensions.Icon>
+          </Button>
+          <Button x:Uid="ButtonsPage_LargeFab"
+                  Style="{StaticResource LargeFabStyle}"
+                  IsEnabled="{Binding ControlsEnabled}"
+                  AutomationProperties.Name="Large FAB">
+            <ut:ControlExtensions.Icon>
+              <FontIcon Glyph="&#xE710;" />
+            </ut:ControlExtensions.Icon>
+          </Button>
+        </StackPanel>
+      </StackPanel>
+
+      <!-- FAB Color Variants -->
+      <StackPanel Spacing="8">
+        <TextBlock Text="Color Variants" Style="{StaticResource LabelLarge}" />
+        <StackPanel Orientation="Horizontal" Spacing="16" VerticalAlignment="Center">
+          <Button x:Uid="ButtonsPage_FabPrimary"
+                  Style="{StaticResource FabStyle}"
+                  IsEnabled="{Binding ControlsEnabled}"
+                  ToolTipService.ToolTip="Primary FAB"
+                  AutomationProperties.Name="Primary FAB">
+            <ut:ControlExtensions.Icon>
+              <FontIcon Glyph="&#xE8D6;" />
+            </ut:ControlExtensions.Icon>
+          </Button>
+          <Button x:Uid="ButtonsPage_FabSurface"
+                  Style="{StaticResource SurfaceFabStyle}"
+                  IsEnabled="{Binding ControlsEnabled}"
+                  ToolTipService.ToolTip="Surface FAB"
+                  AutomationProperties.Name="Surface FAB">
+            <ut:ControlExtensions.Icon>
+              <FontIcon Glyph="&#xE8D6;" />
+            </ut:ControlExtensions.Icon>
+          </Button>
+          <Button x:Uid="ButtonsPage_FabSecondary"
+                  Style="{StaticResource SecondaryFabStyle}"
+                  IsEnabled="{Binding ControlsEnabled}"
+                  ToolTipService.ToolTip="Secondary FAB"
+                  AutomationProperties.Name="Secondary FAB">
+            <ut:ControlExtensions.Icon>
+              <FontIcon Glyph="&#xE8D6;" />
+            </ut:ControlExtensions.Icon>
+          </Button>
+          <Button x:Uid="ButtonsPage_FabTertiary"
+                  Style="{StaticResource TertiaryFabStyle}"
+                  IsEnabled="{Binding ControlsEnabled}"
+                  ToolTipService.ToolTip="Tertiary FAB"
+                  AutomationProperties.Name="Tertiary FAB">
+            <ut:ControlExtensions.Icon>
+              <FontIcon Glyph="&#xE8D6;" />
+            </ut:ControlExtensions.Icon>
+          </Button>
+        </StackPanel>
+      </StackPanel>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SECTION 3: Icon Buttons                     -->
+      <!-- ════════════════════════════════════════════ -->
+      <Border Height="1" Background="{ThemeResource OutlineVariantBrush}" Margin="0,8,0,0" />
+      <TextBlock x:Uid="ButtonsPage_IconHeading"
+                 Text="Icon Buttons"
+                 Style="{StaticResource TitleLarge}" />
+      <TextBlock x:Uid="ButtonsPage_IconDesc"
+                 Text="Icon buttons help people take supplementary actions with a single tap."
+                 Style="{StaticResource BodyMedium}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <StackPanel Orientation="Horizontal" Spacing="12">
+        <Button x:Uid="ButtonsPage_IconPlay"
+                Style="{StaticResource IconButtonStyle}"
+                IsEnabled="{Binding ControlsEnabled}"
+                AutomationProperties.Name="Play">
+          <ut:ControlExtensions.Icon>
+            <FontIcon Glyph="&#xE768;" />
+          </ut:ControlExtensions.Icon>
+        </Button>
+        <Button x:Uid="ButtonsPage_IconPause"
+                Style="{StaticResource IconButtonStyle}"
+                IsEnabled="{Binding ControlsEnabled}"
+                AutomationProperties.Name="Pause">
+          <ut:ControlExtensions.Icon>
+            <FontIcon Glyph="&#xE769;" />
+          </ut:ControlExtensions.Icon>
+        </Button>
+        <Button x:Uid="ButtonsPage_IconStop"
+                Style="{StaticResource IconButtonStyle}"
+                IsEnabled="{Binding ControlsEnabled}"
+                AutomationProperties.Name="Stop">
+          <ut:ControlExtensions.Icon>
+            <FontIcon Glyph="&#xE71A;" />
+          </ut:ControlExtensions.Icon>
+        </Button>
+        <Button x:Uid="ButtonsPage_IconFavorite"
+                Style="{StaticResource IconButtonStyle}"
+                IsEnabled="{Binding ControlsEnabled}"
+                AutomationProperties.Name="Favorite">
+          <ut:ControlExtensions.Icon>
+            <FontIcon Glyph="&#xE735;" />
+          </ut:ControlExtensions.Icon>
+        </Button>
+        <Button x:Uid="ButtonsPage_IconSearch"
+                Style="{StaticResource IconButtonStyle}"
+                IsEnabled="{Binding ControlsEnabled}"
+                AutomationProperties.Name="Search">
+          <ut:ControlExtensions.Icon>
+            <FontIcon Glyph="&#xE721;" />
+          </ut:ControlExtensions.Icon>
+        </Button>
+        <Button x:Uid="ButtonsPage_IconMore"
+                Style="{StaticResource IconButtonStyle}"
+                IsEnabled="{Binding ControlsEnabled}"
+                AutomationProperties.Name="More">
+          <ut:ControlExtensions.Icon>
+            <FontIcon Glyph="&#xE712;" />
+          </ut:ControlExtensions.Icon>
+        </Button>
+        <Button x:Uid="ButtonsPage_IconDisabled"
+                Style="{StaticResource IconButtonStyle}"
+                IsEnabled="False"
+                AutomationProperties.Name="Disabled">
+          <ut:ControlExtensions.Icon>
+            <FontIcon Glyph="&#xE74D;" />
+          </ut:ControlExtensions.Icon>
+        </Button>
+      </StackPanel>
+
+      <!-- ToggleButtons as icon toggles -->
+      <StackPanel Spacing="8">
+        <TextBlock Text="Toggle Buttons" Style="{StaticResource LabelLarge}" />
+        <StackPanel Orientation="Horizontal" Spacing="12">
+          <ToggleButton x:Uid="ButtonsPage_ToggleStar"
+                        IsEnabled="{Binding ControlsEnabled}"
+                        AutomationProperties.Name="Star toggle">
+            <FontIcon Glyph="&#xE734;" FontSize="16" />
+          </ToggleButton>
+          <ToggleButton x:Uid="ButtonsPage_ToggleHeart"
+                        IsEnabled="{Binding ControlsEnabled}"
+                        AutomationProperties.Name="Heart toggle">
+            <FontIcon Glyph="&#xEB51;" FontSize="16" />
+          </ToggleButton>
+          <ToggleButton x:Uid="ButtonsPage_TogglePin"
+                        IsEnabled="{Binding ControlsEnabled}"
+                        AutomationProperties.Name="Pin toggle">
+            <FontIcon Glyph="&#xE718;" FontSize="16" />
+          </ToggleButton>
+          <ToggleButton x:Uid="ButtonsPage_ToggleDisabled"
+                        IsEnabled="False"
+                        AutomationProperties.Name="Disabled toggle">
+            <FontIcon Glyph="&#xE8D8;" FontSize="16" />
+          </ToggleButton>
+        </StackPanel>
+      </StackPanel>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SECTION 4: Custom Corner Radius             -->
+      <!-- ════════════════════════════════════════════ -->
+      <Border Height="1" Background="{ThemeResource OutlineVariantBrush}" Margin="0,8,0,0" />
+      <TextBlock x:Uid="ButtonsPage_CornerHeading"
+                 Text="Buttons with Custom Corner Radius"
+                 Style="{StaticResource TitleLarge}" />
+      <TextBlock x:Uid="ButtonsPage_CornerDesc"
+                 Text="Override the default corner radius for various button styles."
+                 Style="{StaticResource BodyMedium}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <StackPanel Orientation="Horizontal" Spacing="12">
+        <Button x:Uid="ButtonsPage_Corner4"
+                Content="Radius 4"
+                Style="{StaticResource FilledButtonStyle}"
+                CornerRadius="4"
+                IsEnabled="{Binding ControlsEnabled}" />
+        <Button x:Uid="ButtonsPage_Corner8"
+                Content="Radius 8"
+                Style="{StaticResource FilledButtonStyle}"
+                CornerRadius="8"
+                IsEnabled="{Binding ControlsEnabled}" />
+        <Button x:Uid="ButtonsPage_Corner16"
+                Content="Radius 16"
+                Style="{StaticResource FilledButtonStyle}"
+                CornerRadius="16"
+                IsEnabled="{Binding ControlsEnabled}" />
+        <Button x:Uid="ButtonsPage_CornerPill"
+                Content="Pill Shape"
+                Style="{StaticResource FilledButtonStyle}"
+                CornerRadius="20"
+                Height="40"
+                IsEnabled="{Binding ControlsEnabled}" />
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal" Spacing="12">
+        <Button x:Uid="ButtonsPage_CornerOutlined4"
+                Content="Radius 4"
+                Style="{StaticResource OutlinedButtonStyle}"
+                CornerRadius="4"
+                IsEnabled="{Binding ControlsEnabled}" />
+        <Button x:Uid="ButtonsPage_CornerOutlinedAsym"
+                Content="Asymmetric"
+                Style="{StaticResource OutlinedButtonStyle}"
+                CornerRadius="20,4,20,4"
+                IsEnabled="{Binding ControlsEnabled}" />
+        <Button x:Uid="ButtonsPage_CornerTonal0"
+                Content="Sharp"
+                Style="{StaticResource FilledTonalButtonStyle}"
+                CornerRadius="0"
+                IsEnabled="{Binding ControlsEnabled}" />
+      </StackPanel>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SECTION 5: Interactive Demo                 -->
+      <!-- ════════════════════════════════════════════ -->
+      <Border Height="1" Background="{ThemeResource OutlineVariantBrush}" Margin="0,8,0,0" />
+      <TextBlock x:Uid="ButtonsPage_InteractiveHeading"
+                 Text="Interactive Demo"
+                 Style="{StaticResource TitleLarge}" />
+      <TextBlock x:Uid="ButtonsPage_InteractiveDesc"
+                 Text="Click the buttons to see the counter update."
+                 Style="{StaticResource BodyMedium}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <Border Background="{ThemeResource SurfaceVariantBrush}"
+              CornerRadius="16"
+              Padding="24">
+        <StackPanel Spacing="16">
+          <TextBlock Style="{StaticResource HeadlineMedium}">
+            <Run Text="Click Count: " />
+            <Run Text="{Binding ClickCount}" />
+          </TextBlock>
+
+          <StackPanel Orientation="Horizontal" Spacing="12">
+            <Button x:Uid="ButtonsPage_ClickFilled"
+                    Content="Click Me!"
+                    Style="{StaticResource FilledButtonStyle}"
+                    Command="{Binding IncrementClickCountCommand}"
+                    IsEnabled="{Binding ControlsEnabled}"
+                    AutomationProperties.Name="Increment click count" />
+            <Button x:Uid="ButtonsPage_ClickTonal"
+                    Content="Me Too!"
+                    Style="{StaticResource FilledTonalButtonStyle}"
+                    Command="{Binding IncrementClickCountCommand}"
+                    IsEnabled="{Binding ControlsEnabled}"
+                    AutomationProperties.Name="Also increment click count" />
+            <Button x:Uid="ButtonsPage_ClickOutlined"
+                    Content="And Me!"
+                    Style="{StaticResource OutlinedButtonStyle}"
+                    Command="{Binding IncrementClickCountCommand}"
+                    IsEnabled="{Binding ControlsEnabled}"
+                    AutomationProperties.Name="Another increment button" />
+            <Button x:Uid="ButtonsPage_Reset"
+                    Content="Reset"
+                    Style="{StaticResource TextButtonStyle}"
+                    Command="{Binding ResetClickCountCommand}"
+                    IsEnabled="{Binding ControlsEnabled}"
+                    AutomationProperties.Name="Reset click count" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SECTION 6: DropDown & HyperlinkButton       -->
+      <!-- ════════════════════════════════════════════ -->
+      <Border Height="1" Background="{ThemeResource OutlineVariantBrush}" Margin="0,8,0,0" />
+      <TextBlock x:Uid="ButtonsPage_MiscHeading"
+                 Text="Other Button Types"
+                 Style="{StaticResource TitleLarge}" />
+
+      <StackPanel Spacing="8">
+        <TextBlock Text="DropDownButton" Style="{StaticResource LabelLarge}" />
+        <StackPanel Orientation="Horizontal" Spacing="12">
+          <DropDownButton x:Uid="ButtonsPage_Dropdown"
+                          Content="Options"
+                          IsEnabled="{Binding ControlsEnabled}">
+            <DropDownButton.Flyout>
+              <MenuFlyout>
+                <MenuFlyoutItem Text="Option 1">
+                  <MenuFlyoutItem.Icon>
+                    <FontIcon Glyph="&#xE8FB;" />
+                  </MenuFlyoutItem.Icon>
+                </MenuFlyoutItem>
+                <MenuFlyoutItem Text="Option 2">
+                  <MenuFlyoutItem.Icon>
+                    <FontIcon Glyph="&#xE74E;" />
+                  </MenuFlyoutItem.Icon>
+                </MenuFlyoutItem>
+                <MenuFlyoutSeparator />
+                <MenuFlyoutItem Text="Option 3">
+                  <MenuFlyoutItem.Icon>
+                    <FontIcon Glyph="&#xE897;" />
+                  </MenuFlyoutItem.Icon>
+                </MenuFlyoutItem>
+              </MenuFlyout>
+            </DropDownButton.Flyout>
+          </DropDownButton>
+        </StackPanel>
+      </StackPanel>
+
+      <StackPanel Spacing="8">
+        <TextBlock Text="HyperlinkButton" Style="{StaticResource LabelLarge}" />
+        <StackPanel Orientation="Horizontal" Spacing="12">
+          <HyperlinkButton x:Uid="ButtonsPage_Hyperlink1"
+                           Content="Visit Uno Platform"
+                           NavigateUri="https://platform.uno"
+                           IsEnabled="{Binding ControlsEnabled}" />
+          <HyperlinkButton x:Uid="ButtonsPage_Hyperlink2"
+                           Content="Material Design"
+                           NavigateUri="https://m3.material.io"
+                           IsEnabled="{Binding ControlsEnabled}" />
+        </StackPanel>
+      </StackPanel>
+
+      <!-- Bottom spacer -->
+      <Border Height="48" />
+
+    </StackPanel>
+  </ScrollViewer>
+</Page>

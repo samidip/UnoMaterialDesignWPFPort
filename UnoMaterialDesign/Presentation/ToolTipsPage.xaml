@@ -1,0 +1,309 @@
+﻿<Page x:Class="UnoMaterialDesign.Presentation.ToolTipsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:ut="using:Uno.Themes"
+      Background="{ThemeResource SurfaceBrush}">
+
+  <ScrollViewer>
+    <StackPanel Padding="32" Spacing="32" MaxWidth="960"
+                HorizontalAlignment="Stretch">
+
+      <!-- Page Header -->
+      <TextBlock x:Uid="ToolTipsPage.Title"
+                 Text="Tooltips"
+                 Style="{StaticResource HeadlineLarge}" />
+      <TextBlock x:Uid="ToolTipsPage.Subtitle"
+                 Text="Tooltips display informative text on hover or focus. TeachingTip provides richer contextual guidance with actions."
+                 Style="{StaticResource BodyLarge}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <!-- ═══════ Section 1: Basic Tooltips ═══════ -->
+      <TextBlock Text="Basic Tooltips"
+                 Style="{StaticResource TitleLarge}" />
+
+      <Border Background="{ThemeResource SurfaceVariantBrush}"
+              CornerRadius="16" Padding="24"
+              Translation="0,0,16">
+        <Border.Shadow>
+          <ThemeShadow />
+        </Border.Shadow>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="Hover over each control to see its tooltip."
+                     Style="{StaticResource BodyMedium}"
+                     Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+          <StackPanel Orientation="Horizontal" Spacing="12">
+            <Button Content="Hover Me"
+                    ToolTipService.ToolTip="This is a simple tooltip"
+                    Style="{StaticResource FilledButtonStyle}"
+                    AutomationProperties.Name="Button with tooltip" />
+
+            <Button Content="Save"
+                    ToolTipService.ToolTip="Save your current work (Ctrl+S)"
+                    Style="{StaticResource FilledTonalButtonStyle}"
+                    AutomationProperties.Name="Save button with tooltip">
+              <ut:ControlExtensions.Icon>
+                <FontIcon Glyph="&#xE74E;" FontSize="16" />
+              </ut:ControlExtensions.Icon>
+            </Button>
+
+            <Button Content="Delete"
+                    ToolTipService.ToolTip="Permanently delete this item"
+                    Style="{StaticResource OutlinedButtonStyle}"
+                    AutomationProperties.Name="Delete button with tooltip">
+              <ut:ControlExtensions.Icon>
+                <FontIcon Glyph="&#xE74D;" FontSize="16" />
+              </ut:ControlExtensions.Icon>
+            </Button>
+
+            <Button ToolTipService.ToolTip="Add a new item"
+                    Style="{StaticResource IconButtonStyle}"
+                    AutomationProperties.Name="Add button with tooltip">
+              <FontIcon Glyph="&#xE710;" FontSize="16" />
+            </Button>
+          </StackPanel>
+
+          <Border Height="1" Background="{ThemeResource OutlineBrush}" Margin="0,4" />
+
+          <TextBlock Text="Tooltips on other controls" Style="{StaticResource LabelLarge}" />
+
+          <StackPanel Orientation="Horizontal" Spacing="16">
+            <TextBox PlaceholderText="Email address"
+                     ToolTipService.ToolTip="Enter your primary email"
+                     Style="{StaticResource FilledTextBoxStyle}"
+                     Width="200"
+                     AutomationProperties.Name="Email field with tooltip" />
+
+            <CheckBox Content="Enable notifications"
+                      ToolTipService.ToolTip="Toggle email notifications on or off"
+                      AutomationProperties.Name="Notifications toggle with tooltip" />
+
+            <ToggleSwitch Header="Dark Mode"
+                          ToolTipService.ToolTip="Switch between light and dark theme"
+                          AutomationProperties.Name="Theme toggle with tooltip" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+
+      <!-- ═══════ Section 2: Rich Tooltips ═══════ -->
+      <TextBlock Text="Rich Tooltips"
+                 Style="{StaticResource TitleLarge}" />
+
+      <Border Background="{ThemeResource SurfaceVariantBrush}"
+              CornerRadius="16" Padding="24"
+              Translation="0,0,16">
+        <Border.Shadow>
+          <ThemeShadow />
+        </Border.Shadow>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="Tooltips can contain complex XAML content including multiple text blocks and icons."
+                     Style="{StaticResource BodyMedium}"
+                     Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+          <StackPanel Orientation="Horizontal" Spacing="16">
+            <!-- Rich tooltip with structured content -->
+            <Button Content="Rich Tooltip"
+                    Style="{StaticResource FilledButtonStyle}"
+                    AutomationProperties.Name="Button with rich tooltip">
+              <ToolTipService.ToolTip>
+                <ToolTip>
+                  <StackPanel Spacing="8" MaxWidth="280">
+                    <TextBlock Text="Rich Tooltip"
+                               Style="{StaticResource TitleSmall}" />
+                    <TextBlock Text="Rich tooltips bring attention to a particular element or feature that warrants the user's focus. They support multiple lines of informational text."
+                               Style="{StaticResource BodySmall}"
+                               Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                               TextWrapping="Wrap" />
+                  </StackPanel>
+                </ToolTip>
+              </ToolTipService.ToolTip>
+            </Button>
+
+            <!-- Tooltip with icon -->
+            <Button Content="With Icon"
+                    Style="{StaticResource FilledTonalButtonStyle}"
+                    AutomationProperties.Name="Button with icon tooltip">
+              <ToolTipService.ToolTip>
+                <ToolTip>
+                  <StackPanel Orientation="Horizontal" Spacing="12">
+                    <FontIcon Glyph="&#xE946;" FontSize="24"
+                              Foreground="{ThemeResource PrimaryBrush}"
+                              VerticalAlignment="Top" />
+                    <StackPanel Spacing="4" MaxWidth="240">
+                      <TextBlock Text="Information"
+                                 Style="{StaticResource TitleSmall}" />
+                      <TextBlock Text="This tooltip includes an icon alongside the text content for visual emphasis."
+                                 Style="{StaticResource BodySmall}"
+                                 TextWrapping="Wrap" />
+                    </StackPanel>
+                  </StackPanel>
+                </ToolTip>
+              </ToolTipService.ToolTip>
+            </Button>
+
+            <!-- Tooltip with keyboard shortcut -->
+            <Button Content="Shortcut"
+                    Style="{StaticResource OutlinedButtonStyle}"
+                    AutomationProperties.Name="Button with shortcut tooltip">
+              <ToolTipService.ToolTip>
+                <ToolTip>
+                  <Grid ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="*" />
+                      <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Undo last action"
+                               Style="{StaticResource BodySmall}"
+                               VerticalAlignment="Center" />
+                    <Border Grid.Column="1"
+                            Background="{ThemeResource SurfaceVariantBrush}"
+                            CornerRadius="4" Padding="8,4">
+                      <TextBlock Text="Ctrl+Z"
+                                 Style="{StaticResource LabelSmall}" />
+                    </Border>
+                  </Grid>
+                </ToolTip>
+              </ToolTipService.ToolTip>
+            </Button>
+          </StackPanel>
+        </StackPanel>
+      </Border>
+
+      <!-- ═══════ Section 3: TeachingTip ═══════ -->
+      <TextBlock Text="TeachingTip"
+                 Style="{StaticResource TitleLarge}" />
+
+      <Border Background="{ThemeResource SurfaceVariantBrush}"
+              CornerRadius="16" Padding="24"
+              Translation="0,0,16">
+        <Border.Shadow>
+          <ThemeShadow />
+        </Border.Shadow>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="TeachingTip is a rich tooltip alternative with title, subtitle, action buttons, and optional close. It replaces WPF's PopupBox for guided experiences."
+                     Style="{StaticResource BodyMedium}"
+                     Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+          <StackPanel Orientation="Horizontal" Spacing="12">
+            <!-- Anchored TeachingTip target -->
+            <Button x:Name="TeachingTipTarget"
+                    Content="Show TeachingTip"
+                    Style="{StaticResource FilledButtonStyle}"
+                    AutomationProperties.Name="Show teaching tip">
+              <Button.Resources>
+                <TeachingTip x:Name="AnchoredTip"
+                             Target="{Binding ElementName=TeachingTipTarget}"
+                             Title="Welcome to Tooltips"
+                             Subtitle="{Binding TeachingTipMessage}"
+                             IsOpen="{Binding IsTeachingTipOpen, Mode=TwoWay}"
+                             ActionButtonContent="Got it"
+                             CloseButtonContent="Dismiss"
+                             PreferredPlacement="Bottom" />
+              </Button.Resources>
+              <ut:ControlExtensions.Icon>
+                <FontIcon Glyph="&#xE82F;" FontSize="16" />
+              </ut:ControlExtensions.Icon>
+            </Button>
+
+            <ToggleSwitch Header="Open TeachingTip"
+                          IsOn="{Binding IsTeachingTipOpen, Mode=TwoWay}"
+                          AutomationProperties.Name="Toggle teaching tip" />
+          </StackPanel>
+
+          <Border Height="1" Background="{ThemeResource OutlineBrush}" Margin="0,4" />
+
+          <!-- Non-anchored TeachingTip -->
+          <StackPanel Spacing="8">
+            <TextBlock Text="Non-targeted (floating)" Style="{StaticResource LabelLarge}" />
+            <Button x:Name="RichTipTarget"
+                    Content="Show Rich Tip"
+                    Style="{StaticResource FilledTonalButtonStyle}"
+                    AutomationProperties.Name="Show rich tip">
+              <Button.Resources>
+                <TeachingTip x:Name="RichTip"
+                             Title="Rich Tooltip"
+                             Subtitle="Rich tooltips bring attention to a particular element or feature that warrants the user's focus. It supports multiple lines of informational text."
+                             IsOpen="{Binding IsRichTipOpen, Mode=TwoWay}"
+                             ActionButtonContent="Action 1"
+                             CloseButtonContent="Close"
+                             PreferredPlacement="Top">
+                  <TeachingTip.IconSource>
+                    <FontIconSource Glyph="&#xE946;" />
+                  </TeachingTip.IconSource>
+                </TeachingTip>
+              </Button.Resources>
+              <ut:ControlExtensions.Icon>
+                <FontIcon Glyph="&#xE946;" FontSize="16" />
+              </ut:ControlExtensions.Icon>
+            </Button>
+
+            <ToggleSwitch Header="Open Rich Tip"
+                          IsOn="{Binding IsRichTipOpen, Mode=TwoWay}"
+                          AutomationProperties.Name="Toggle rich tip" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+
+      <!-- ═══════ Section 4: Tooltip Placement ═══════ -->
+      <TextBlock Text="Tooltip Placement"
+                 Style="{StaticResource TitleLarge}" />
+
+      <Border Background="{ThemeResource SurfaceVariantBrush}"
+              CornerRadius="16" Padding="24"
+              Translation="0,0,16">
+        <Border.Shadow>
+          <ThemeShadow />
+        </Border.Shadow>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="ToolTipService.Placement controls where the tooltip appears relative to the target."
+                     Style="{StaticResource BodyMedium}"
+                     Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+          <Grid ColumnSpacing="16" RowSpacing="16"
+                HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"
+                    Content="Top"
+                    Style="{StaticResource OutlinedButtonStyle}"
+                    ToolTipService.ToolTip="Placed on top"
+                    ToolTipService.Placement="Top"
+                    AutomationProperties.Name="Tooltip top" />
+
+            <Button Grid.Column="1"
+                    Content="Bottom"
+                    Style="{StaticResource OutlinedButtonStyle}"
+                    ToolTipService.ToolTip="Placed on bottom"
+                    ToolTipService.Placement="Bottom"
+                    AutomationProperties.Name="Tooltip bottom" />
+
+            <Button Grid.Column="2"
+                    Content="Left"
+                    Style="{StaticResource OutlinedButtonStyle}"
+                    ToolTipService.ToolTip="Placed on left"
+                    ToolTipService.Placement="Left"
+                    AutomationProperties.Name="Tooltip left" />
+
+            <Button Grid.Column="3"
+                    Content="Right"
+                    Style="{StaticResource OutlinedButtonStyle}"
+                    ToolTipService.ToolTip="Placed on right"
+                    ToolTipService.Placement="Right"
+                    AutomationProperties.Name="Tooltip right" />
+          </Grid>
+        </StackPanel>
+      </Border>
+
+    </StackPanel>
+  </ScrollViewer>
+</Page>

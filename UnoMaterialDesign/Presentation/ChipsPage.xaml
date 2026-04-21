@@ -1,0 +1,293 @@
+﻿<Page x:Class="UnoMaterialDesign.Presentation.ChipsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:ut="using:Uno.Themes"
+      Background="{ThemeResource SurfaceBrush}">
+
+  <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+    <StackPanel Padding="32"
+                Spacing="32"
+                MaxWidth="960"
+                HorizontalAlignment="Center">
+
+      <!-- ==================== SECTION 1: Assist / Action Chips ==================== -->
+      <TextBlock x:Uid="ChipsPage_ActionTitle"
+                 Text="Action Chips"
+                 Style="{StaticResource HeadlineMedium}" />
+
+      <TextBlock x:Uid="ChipsPage_ActionDesc"
+                 Text="Assist chips help narrow an entity's representation, such as a contact or place."
+                 Style="{StaticResource BodyMedium}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <!-- Assist Chips row -->
+      <Border Background="{ThemeResource SurfaceVariantBrush}"
+              CornerRadius="16"
+              Padding="24"
+              Translation="0,0,8">
+        <Border.Shadow>
+          <ThemeShadow />
+        </Border.Shadow>
+        <StackPanel Spacing="16">
+          <TextBlock Text="Assist Chips"
+                     Style="{StaticResource TitleMedium}" />
+
+          <utu:ChipGroup Style="{StaticResource AssistChipGroupStyle}">
+            <utu:Chip x:Uid="ChipsPage_ChipJames"
+                      Content="James Willock"
+                      AutomationProperties.Name="James Willock Chip">
+              <utu:Chip.Icon>
+                <FontIcon Glyph="&#xE77B;" />
+              </utu:Chip.Icon>
+            </utu:Chip>
+            <utu:Chip x:Uid="ChipsPage_ChipExample"
+                      Content="Example Chip"
+                      AutomationProperties.Name="Example Chip" />
+            <utu:Chip x:Uid="ChipsPage_ChipANZ"
+                      Content="ANZ Bank"
+                      AutomationProperties.Name="ANZ Bank Chip">
+              <utu:Chip.Icon>
+                <FontIcon Glyph="&#xE185;" />
+              </utu:Chip.Icon>
+            </utu:Chip>
+            <utu:Chip x:Uid="ChipsPage_ChipTwitter"
+                      Content="Twitter"
+                      AutomationProperties.Name="Twitter Chip">
+              <utu:Chip.Icon>
+                <FontIcon Glyph="&#xE134;" />
+              </utu:Chip.Icon>
+            </utu:Chip>
+            <utu:Chip x:Uid="ChipsPage_ChipZNA"
+                      Content="ZNA Inc"
+                      AutomationProperties.Name="ZNA Inc Chip">
+              <utu:Chip.Icon>
+                <FontIcon Glyph="&#xE128;" />
+              </utu:Chip.Icon>
+            </utu:Chip>
+          </utu:ChipGroup>
+        </StackPanel>
+      </Border>
+
+      <!-- Input Chips (removable) -->
+      <Border Background="{ThemeResource SurfaceVariantBrush}"
+              CornerRadius="16"
+              Padding="24"
+              Translation="0,0,8">
+        <Border.Shadow>
+          <ThemeShadow />
+        </Border.Shadow>
+        <StackPanel Spacing="16">
+          <TextBlock Text="Input Chips (Removable)"
+                     Style="{StaticResource TitleMedium}" />
+
+          <TextBlock Text="Click the X to remove a tag from the collection."
+                     Style="{StaticResource BodyMedium}"
+                     Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+          <utu:ChipGroup ItemsSource="{Binding Tags}"
+                         Style="{StaticResource InputChipGroupStyle}"
+                         AutomationProperties.Name="Removable Tags" />
+
+          <TextBlock Style="{StaticResource BodyMedium}"
+                     Foreground="{ThemeResource OnSurfaceVariantBrush}">
+            <Run Text="Remaining tags:" />
+            <Run Text="{Binding Tags.Count}" FontWeight="Bold" />
+          </TextBlock>
+        </StackPanel>
+      </Border>
+
+      <!-- ==================== SECTION 2: Filter Chips ==================== -->
+      <TextBlock x:Uid="ChipsPage_FilterTitle"
+                 Text="Filter Chips"
+                 Style="{StaticResource HeadlineMedium}" />
+
+      <TextBlock x:Uid="ChipsPage_FilterDesc"
+                 Text="Filter chips use tags or descriptive words to filter content. They can be toggled on and off."
+                 Style="{StaticResource BodyMedium}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <!-- Standalone filter chips -->
+      <Border Background="{ThemeResource SurfaceVariantBrush}"
+              CornerRadius="16"
+              Padding="24"
+              Translation="0,0,8">
+        <Border.Shadow>
+          <ThemeShadow />
+        </Border.Shadow>
+        <StackPanel Spacing="16">
+          <TextBlock Text="Standalone Filter Chips"
+                     Style="{StaticResource TitleMedium}" />
+
+          <utu:ChipGroup Style="{StaticResource FilterChipGroupStyle}"
+                         SelectionMode="Multiple">
+            <utu:Chip x:Uid="ChipsPage_FilterDefault"
+                      Content="Default"
+                      IsChecked="True"
+                      AutomationProperties.Name="Default Filter" />
+            <utu:Chip x:Uid="ChipsPage_FilterPrimary"
+                      Content="Primary"
+                      IsChecked="True"
+                      AutomationProperties.Name="Primary Filter" />
+            <utu:Chip x:Uid="ChipsPage_FilterSecondary"
+                      Content="Secondary"
+                      IsChecked="True"
+                      AutomationProperties.Name="Secondary Filter" />
+            <utu:Chip x:Uid="ChipsPage_FilterDisabled"
+                      Content="Disabled"
+                      IsEnabled="False"
+                      AutomationProperties.Name="Disabled Filter" />
+          </utu:ChipGroup>
+        </StackPanel>
+      </Border>
+
+      <!-- Filter chip groups with data binding -->
+      <Grid ColumnSpacing="24">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Background="{ThemeResource SurfaceVariantBrush}"
+                CornerRadius="16"
+                Padding="24"
+                Translation="0,0,8">
+          <Border.Shadow>
+            <ThemeShadow />
+          </Border.Shadow>
+          <StackPanel Spacing="16">
+            <TextBlock Text="Filter: Planets"
+                       Style="{StaticResource TitleMedium}" />
+            <utu:ChipGroup ItemsSource="{Binding Planets}"
+                           SelectionMode="Multiple"
+                           Style="{StaticResource FilterChipGroupStyle}"
+                           AutomationProperties.Name="Planet Filter Chips" />
+          </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1"
+                Background="{ThemeResource SurfaceVariantBrush}"
+                CornerRadius="16"
+                Padding="24"
+                Translation="0,0,8">
+          <Border.Shadow>
+            <ThemeShadow />
+          </Border.Shadow>
+          <StackPanel Spacing="16">
+            <TextBlock Text="Filter: Fruits"
+                       Style="{StaticResource TitleMedium}" />
+            <utu:ChipGroup ItemsSource="{Binding Fruits}"
+                           SelectionMode="Multiple"
+                           Style="{StaticResource FilterChipGroupStyle}"
+                           AutomationProperties.Name="Fruit Filter Chips" />
+          </StackPanel>
+        </Border>
+      </Grid>
+
+      <!-- ==================== SECTION 3: Choice / Suggestion Chips ==================== -->
+      <TextBlock x:Uid="ChipsPage_ChoiceTitle"
+                 Text="Choice Chips"
+                 Style="{StaticResource HeadlineMedium}" />
+
+      <TextBlock x:Uid="ChipsPage_ChoiceDesc"
+                 Text="Choice chips allow selection of a single option from a set, similar to radio buttons."
+                 Style="{StaticResource BodyMedium}"
+                 Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+
+      <!-- Standalone choice chips -->
+      <Border Background="{ThemeResource SurfaceVariantBrush}"
+              CornerRadius="16"
+              Padding="24"
+              Translation="0,0,8">
+        <Border.Shadow>
+          <ThemeShadow />
+        </Border.Shadow>
+        <StackPanel Spacing="16">
+          <TextBlock Text="Suggestion Chips (Single Selection)"
+                     Style="{StaticResource TitleMedium}" />
+
+          <utu:ChipGroup Style="{StaticResource SuggestionChipGroupStyle}"
+                         SelectionMode="Single">
+            <utu:Chip x:Uid="ChipsPage_ChoiceDefault"
+                      Content="Default"
+                      IsChecked="True"
+                      AutomationProperties.Name="Default Choice" />
+            <utu:Chip x:Uid="ChipsPage_ChoicePrimary"
+                      Content="Primary"
+                      AutomationProperties.Name="Primary Choice" />
+            <utu:Chip x:Uid="ChipsPage_ChoiceSecondary"
+                      Content="Secondary"
+                      AutomationProperties.Name="Secondary Choice" />
+            <utu:Chip x:Uid="ChipsPage_ChoiceDisabled"
+                      Content="Disabled"
+                      IsEnabled="False"
+                      AutomationProperties.Name="Disabled Choice" />
+          </utu:ChipGroup>
+        </StackPanel>
+      </Border>
+
+      <!-- Choice chip groups with data binding -->
+      <Grid ColumnSpacing="24">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Background="{ThemeResource SurfaceVariantBrush}"
+                CornerRadius="16"
+                Padding="24"
+                Translation="0,0,8">
+          <Border.Shadow>
+            <ThemeShadow />
+          </Border.Shadow>
+          <StackPanel Spacing="16">
+            <TextBlock Text="Choice: Planets"
+                       Style="{StaticResource TitleMedium}" />
+            <utu:ChipGroup ItemsSource="{Binding Planets}"
+                           SelectedItem="{Binding SelectedPlanet, Mode=TwoWay}"
+                           SelectionMode="Single"
+                           Style="{StaticResource SuggestionChipGroupStyle}"
+                           AutomationProperties.Name="Planet Choice Chips" />
+            <TextBlock Style="{StaticResource BodyMedium}"
+                       Foreground="{ThemeResource OnSurfaceVariantBrush}">
+              <Run Text="Selected:" />
+              <Run Text="{Binding SelectedPlanet}" FontWeight="Bold" />
+            </TextBlock>
+          </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1"
+                Background="{ThemeResource SurfaceVariantBrush}"
+                CornerRadius="16"
+                Padding="24"
+                Translation="0,0,8">
+          <Border.Shadow>
+            <ThemeShadow />
+          </Border.Shadow>
+          <StackPanel Spacing="16">
+            <TextBlock Text="Choice: Fruits"
+                       Style="{StaticResource TitleMedium}" />
+            <utu:ChipGroup ItemsSource="{Binding Fruits}"
+                           SelectionMode="Single"
+                           Style="{StaticResource SuggestionChipGroupStyle}"
+                           AutomationProperties.Name="Fruit Choice Chips" />
+          </StackPanel>
+        </Border>
+      </Grid>
+
+      <!-- Status message -->
+      <Border Background="{ThemeResource SurfaceBrush}"
+              CornerRadius="12"
+              Padding="16"
+              Visibility="{Binding ChipMessage}">
+        <TextBlock Style="{StaticResource BodyLarge}"
+                   Foreground="{ThemeResource PrimaryBrush}">
+          <Run Text="Status:" />
+          <Run Text="{Binding ChipMessage}" FontWeight="Bold" />
+        </TextBlock>
+      </Border>
+
+    </StackPanel>
+  </ScrollViewer>
+</Page>
