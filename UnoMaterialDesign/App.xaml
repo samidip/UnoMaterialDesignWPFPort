@@ -1,4 +1,4 @@
-<Application x:Class="UnoMaterialDesign.App"
+﻿<Application x:Class="UnoMaterialDesign.App"
        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
        xmlns:utum="using:Uno.Toolkit.UI.Material">
@@ -22,6 +22,23 @@
       </ResourceDictionary.MergedDictionaries>
 
       <!-- Add resources here -->
+
+      <!-- FAB style variants based on Material FabStyle -->
+      <Style x:Key="SmallFabStyle" TargetType="Button" BasedOn="{StaticResource FabStyle}">
+        <Setter Property="Width" Value="40" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="MinWidth" Value="40" />
+        <Setter Property="MinHeight" Value="40" />
+        <Setter Property="Padding" Value="8" />
+      </Style>
+      <Style x:Key="SecondaryFabStyle" TargetType="Button" BasedOn="{StaticResource FabStyle}">
+        <Setter Property="Background" Value="{ThemeResource SecondaryContainerBrush}" />
+        <Setter Property="Foreground" Value="{ThemeResource OnSecondaryContainerBrush}" />
+      </Style>
+      <Style x:Key="TertiaryFabStyle" TargetType="Button" BasedOn="{StaticResource FabStyle}">
+        <Setter Property="Background" Value="{ThemeResource TertiaryContainerBrush}" />
+        <Setter Property="Foreground" Value="{ThemeResource OnTertiaryContainerBrush}" />
+      </Style>
 
     </ResourceDictionary>
   </Application.Resources>

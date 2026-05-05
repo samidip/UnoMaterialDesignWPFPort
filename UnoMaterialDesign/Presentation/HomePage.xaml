@@ -27,7 +27,7 @@
                     Height="100"
                     CornerRadius="12"
                     VerticalAlignment="Center">
-              <FontIcon Glyph="&#x1F4DA;"
+              <FontIcon Glyph="&#xE82D;"
                         FontSize="64"
                         Foreground="{ThemeResource OnPrimaryBrush}"
                         HorizontalAlignment="Center"
@@ -183,10 +183,10 @@
               <!-- Left: GitHub Octocat placeholder -->
               <Border Background="{ThemeResource PrimaryContainerBrush}"
                       CornerRadius="16,0,0,0">
-                <FontIcon Glyph="&#x1F419;"
-                          FontSize="72"
-                          HorizontalAlignment="Center"
-                          VerticalAlignment="Center" />
+                <FontIcon Glyph="&#xE9A8;"
+                            FontSize="72"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
               </Border>
 
               <!-- Right: Title + Description -->
